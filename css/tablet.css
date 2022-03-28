@@ -1,0 +1,147 @@
+@media(max-width: 1024px){ 
+    .info-more{
+        background-color: #6dcff6;
+        height: 300px;
+        margin-top: 30px;
+        width: 100%;
+        /* display: none; */
+        border-radius: 300px 0px 0px 300px;
+        border-color: #fceffc #fceffc #fceffc #42A5FF;
+        border-left:inherit; 
+        position: relative;
+    }
+    .info-more1{
+        background-color: #fceffc;
+        height: 300px;
+        padding-left: 20px;
+        padding-top: 10px;
+        font-size: 10px;
+        margin-left: 10px;
+        width: 100%;
+        border-radius: 300px 0px 0px 300px;
+        position: absolute;
+    }
+
+    nav .mainMenu{
+        height: 100vh;
+        position: fixed;
+        top: 0;
+        right: 0;
+        left: 0;
+        z-index: 10;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        background-color: #fff;
+        transition: top 1s ease;
+        display: none;
+    }
+    .openMenu i{
+        padding: 40px;
+        display: block;
+        flex-wrap: wrap;
+    }
+    nav .mainMenu .closeMenu{
+        display: block;
+        position: absolute;
+        top: 20px;
+        left: 20px;
+    }
+    nav .openMenu{
+        display: block;
+        flex-wrap: wrap;
+    }
+    /* Marksheet */
+    .marksheet .logo{
+        height:150px;
+        width: auto;
+        padding-left: 40px;
+        margin-top: -120px;
+        display: none;
+        justify-content: flex-start;  
+    }
+    .form-handler input{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 18px;
+        /* margin-bottom: 8px; */
+        padding: 4px;
+        border: 2px solid #42A5FF;
+        border-radius: 5px;
+        /* width: 100%; */
+    }
+ /* contact */
+ /* #contact{
+    width: 100%;
+    background-color: #42A5FF;
+    padding: 20px;
+    margin-bottom: 20px;
+    border-top-left-radius: 40px;
+    border-top-right-radius: 40px;
+    border-bottom-left-radius: 40px;
+    border-bottom-right-radius: 40px;
+    box-shadow: 0 8px 8px -4px #226aea;
+    display: block;
+    justify-items: center;
+} */
+/* 
+#contact-photo{
+    display: flex;
+    justify-content: flex-end;
+    padding: 20px;
+    display: none;
+}
+#contact-photo .contact-photo{
+    display: flex;
+    justify-content: flex-end;
+    display: none;
+} */
+@media(min-width: 780px){
+    .col-sm #login .login{
+        display:inline-block;   
+    }
+    #login{
+        color: #42A5FF;
+        font-size:20px;
+        font-weight: 400;
+        margin-top: 30px;
+        padding-right: 40px;
+        padding-left: 40px;
+        padding-bottom: 10px; 
+    }
+    #input{
+        max-width: 400px;
+        display:flex;
+        justify-content: center;
+    }
+    .col-sm .login{
+      padding-left: 30px;
+      padding-bottom: 20px;
+    }
+    #input{
+        width: 100%;
+        border: 1px solid #42A5FF;
+        justify-content:first baseline;
+        border-radius: 20px;
+        outline: none;
+        color: #9DBFAF;   
+    }
+    #icon{
+        margin-right: 20px;
+        padding: 2px;
+        position: absolute;
+        color: #42A5FF;
+    } 
+    .form-handler input{
+        display: flex;
+        justify-content: center;
+        flex-direction: column;
+        font-size: 18px;
+        /* margin-bottom: 8px; */
+        padding: 4px;
+        border: 2px solid #42A5FF;
+        border-radius: 5px;
+    
+    }
+}
