@@ -1,3 +1,16 @@
+<!-- <?php
+   // include 'config.php';
+   //  $sql= "SELECT * FROM exam ";
+   //  $res = mysqli_query($conn,$sql);
+
+   //  $data=[];
+   //  if(mysqli_num_rows($res)> 0){
+   //      while($row = mysqli_fetch_assoc($res)){
+   //          array_unshift($data,$row);
+   //      }
+   //  }
+
+?> -->
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +71,7 @@
                 <div class="col-sm"></div>
                 <div class="col-sm">
                     <div id="login">
-                        <span class="login"><a href="logout.php">logout</a> </span>
+                        <span class="login"><a href="logout.php">Logout</a> </span>
                         <!-- <span class="login"> <a href="register.php">Sign Up</a></span> -->
                     </div>
                 </div>
@@ -75,12 +88,37 @@
             <div class="infotag">
                 <h1>EXAM'S DETAILS</h1>
             </div>
+           <!--  <table>
+                  <tr>
+                        <th>Exam_ID</th>
+                        <th>Subject</th>
+                        <th>Date</th>
+                        <th>Year</th>
+                    </tr>
+        <?php 
+        // $i=1;
+        foreach($data as $d){
+            ?>
+            <tbody>
+                <tr>
+                    <td><?php echo $d['exam_id'] ;?> </td>          
+                    <td><?php echo $d['subject'] ;?> </td>
+                    <td><?php echo $d['date'] ;?> </td>
+                    <td><?php echo $d['year'] ;?> </td>
+                
+                    <td><a href="updateexamdetail.php?id=<?php echo $d['exam_id'] ?> ">Edit</a></td>
+                    <td><a href="deleteexamdetail.php?id=<?php echo $d['exam_id'] ?> ">Delete</a></td>
+                </tr>
+            </tbody>
+            <?php } ?>
+    </table> -->
             <table>
                 <thead>
                     <tr>
 
                         <th>EXAM_ID</th>
                         <th>Subject</th>
+                        <th>Semester</th>  
                         <th>Date</th>
                         <th>Year</th>
                     </tr>
@@ -89,6 +127,7 @@
                     <tr>
                         <td>1</td>
                         <td>SAD</td>
+                        <td>Fifth</td>
                         <td>2020/04/05</td>
                         <td>2022</td>
                     </tr>

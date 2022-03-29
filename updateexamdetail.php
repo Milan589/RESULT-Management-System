@@ -1,3 +1,34 @@
+<?php
+$id = $_GET['id'];
+include 'config.php';
+
+  if(isset($_POST['submit'])){
+    
+        $subject = $_POST['subject'];
+        $semester = $_POST['semester'];
+        $examdate = $_POST['examdate'];
+        $year = $_POST['year'];
+        
+
+        $sql = "UPDATE exam set  subject ='$subject', semester= '$semester',  examdate = 'dob', year= '$year' where exam_id = '$id'";
+
+    mysqli_query($conn, $sql);
+
+    if (mysqli_affected_rows($conn) == 1) {
+    
+    header('location:examdetail.php');
+   }
+   else{
+    echo "Data update failed".mysqli_error($conn);
+   }
+  }
+
+  $sql1 = "select * from exam where exam_id = $id";
+  // echo $sql1;
+  $res = mysqli_query($conn, $sql1);
+  $data = mysqli_fetch_assoc($res);
+  //print_r($data);
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +37,27 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Add Exam</title>
+    <title>Display Exam Info</title>
+    <style>
+        table {
+            width: 100%;
+            margin: 20px 0;
+            border-collapse: collapse;
+        }
+
+        table,
+        th,
+        td {
+            border: 1px solid #cdcdcd;
+        }
+
+        table th,
+        table td {
+            padding: 5px;
+            text-align: left;
+        }
+    </style>
+
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/tablet.css">
     <link rel="stylesheet" href="css/mobile.css">
@@ -38,7 +89,7 @@
                 <div class="col-sm"></div>
                 <div class="col-sm">
                     <div id="login">
-                        <span class="login"> <a href="logout.php">Logout</a> </span>
+                        <span class="login"><a href="logout.php">Logout</a> </span>
                         <!-- <span class="login"> <a href="register.php">Sign Up</a></span> -->
                     </div>
                 </div>
@@ -50,7 +101,7 @@
             </div>
         </div>
     </div>
-    <div class="student-info">
+     <div class="student-info">
         <div class="container">
             <div class="result-form">
                 <form method="post" id="form" class="add-result" action="">
@@ -88,7 +139,7 @@
                             <label class="labeling">Exam Date</label>
                             <div class="row">
                                 <div class="col-sm">
-                                    <input type="text" name="dob" class="round" placeholder="Enter exam date" id="dob">
+                                    <input type="text" name="examdate" class="round" placeholder="Enter exam date" id="dob">
                                     <small></small>
 
 
@@ -114,7 +165,6 @@
             </div>
         </div>
     </div>
-
 
     <footer class="foot-content">
         <div class="container">
@@ -149,11 +199,6 @@
     <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
     <script type="text/javascript" src="./js/jquery3.3.1.js"></script>
     <script type="text/javascript" src="./js/index.js"></script>
-    <script type="text/javascript" src="./js/addexam.js"></script>
-
-
-
-
 
 </body>
 

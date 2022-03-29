@@ -853,6 +853,7 @@ table th,
 .form-handler.error small{
     display: block;
    padding-bottom: 10px;
+   padding-left: 10px;
     visibility: visible;
 }
 #time{

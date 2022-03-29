@@ -1,3 +1,16 @@
+<?php
+   include 'config.php';
+    $sql= "SELECT * FROM student ";
+    $res = mysqli_query($conn,$sql);
+
+    $data=[];
+    if(mysqli_num_rows($res)> 0){
+        while($row = mysqli_fetch_assoc($res)){
+            array_unshift($data,$row);
+        }
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -6,7 +19,7 @@
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Display Student Info</title>
+    <title>Update Student Info</title>
     <style>
         table {
             width: 100%;
@@ -58,7 +71,7 @@
                 <div class="col-sm"></div>
                 <div class="col-sm">
                     <div id="login">
-                        <span class="login">Logout</a> </span>
+                        <span class="login"><a href="logout.php">Logout</a> </span>
                         <!-- <span class="login"> <a href="register.php">Sign Up</a></span> -->
                     </div>
                 </div>
@@ -71,43 +84,49 @@
         </div>
     </div>
     <div class="student-info">
-        <div class="container">
+      <!--   <div class="container"> -->
             <div class="infotag">
                 <h1>STUDENTS'S DETAILS</h1>
             </div>
+
             <table>
-                <thead>
-                    <tr>
+                  <tr>
                         <th>Student_ID</th>
-                        <th>College_name</th>
-                        <th>Faculty</th>
+                      <!--   <th>College_name</th>
+                        <th>Faculty</th> -->
                         <th>Name</th>
                         <th>Last Name</th>
                         <th>Email</th>
-                        <th>Password</th>
+                        <!-- <th>Password</th> -->
                         <th>Phone</th>
                         <th>Address</th>
                         <th>Year</th>
                         <th>Date of Birth</th>
                     </tr>
-                </thead>
-                <tbody>
-                    <tr>
-                        <td>1</td>
-                        <td>Virtual National College</td>
-                        <td>CSIT</td>
-                        <td>Milan</td>
-                        <td>Chaudhary</td>
-                        <td>milanchaudhary589@gmail.com</td>
-                        <td>12345678</td>
-                        <td>9868611452</td>
-                        <td>Lalitpur</td>
-                        <td>2018</td>
-                        <td>1999/08/03</td>
-                    </tr>
-                </tbody>
-            </table>
-        </div>
+        <?php 
+        // $i=1;
+        foreach($data as $d){
+            ?>
+            <tbody>
+                <tr>
+                    <td><?php echo $d['student_id'] ;?> </td>          
+                    <td><?php echo $d['student_fname'] ;?> </td>
+                    <td><?php echo $d['student_lname'] ;?> </td>
+                    <td><?php echo $d['student_username'] ;?> </td>
+                    <!-- <td><?php echo $d['student_password'] ;?> </td> -->
+                    <td><?php echo $d['student_phone'] ;?> </td>
+                    <td><?php echo $d['student_address'] ;?> </td>
+                    <td><?php echo $d['student_year'] ;?> </td>
+                    <td><?php echo $d['student_dob'] ;?> </td>
+                
+                    <td><a href="updatestudent.php?id=<?php echo $d['student_id'] ?> ">Edit</a></td>
+                    <td><a href="deletestudent.php?id=<?php echo $d['student_id'] ?> ">Delete</a></td>
+                </tr>
+            </tbody>
+            <?php } ?>
+    </table>
+          
+        <!-- </div> -->
     </div>
 
     <footer class="foot-content">

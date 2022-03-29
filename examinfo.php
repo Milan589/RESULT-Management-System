@@ -63,11 +63,11 @@
                 <div class="result-add">
                     <h1>USER</h1>
                     <div class="examfield">
-                        <div class="button"><a href="register.php">ADD USER</a></div>
+                        <div class="button"><a href="adduser.php">ADD USER</a></div>
                         <div class="button" onclick="ShowAndHide()">DISPLAY USER </div>
                         <div id="SectionName">
                             <span class="button"><a href="studentinfo.php">STUDENT</a></span>
-                            <span class="button"><a href="studentinfo.php">TEACHER</a></span>
+                            <span class="button"><a href="teacherinfo.php">TEACHER</a></span>
                         </div>
                     </div>
                 </div>
@@ -75,7 +75,7 @@
                     <h1>EXAM</h1>
                     <div class="examfield">
                         <div class="button"><a href="addexam.php">ADD EXAM</a></div>
-                        <div class="button">DISPLAY EXAM</div>
+                        <div class="button"><a href="examdetail.php">DISPLAY EXAM</a></div>
                     </div>
                 </div>
             </div>

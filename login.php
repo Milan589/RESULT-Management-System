@@ -1,13 +1,17 @@
  <?php
     session_start();
     include 'config.php';
-    $message="";
-
+     $message= "";
+     $email=$temp_password= $db_table ="";
       if(isset($_POST['submit'])){
         $email = $_POST['username'];
         $temp_password = $_POST['password'];
         $db_table = $_POST['id'];
-         
+
+
+        if(empty($db_table)){
+           echo "<h1> Identity Must be selected</h1>";
+        } 
         
         $sql = "SELECT * FROM student WHERE student_username = '$email'";  
         $result = mysqli_query($conn, $sql);
@@ -22,13 +26,31 @@
             }else{
                 echo "password invalid";
             }
+        }
+       
+         if($db_table == 'teacher'){
+            $sql = "SELECT * FROM teacher WHERE teacher_username = '$email'";  
+            $result = mysqli_query($conn, $sql);
+            $num_rows = mysqli_num_rows($result);
+        if($num_rows == 1){  
+            $row = mysqli_fetch_assoc($result);
+            if(password_verify($temp_password,$row['teacher_password'])){
+                $_SESSION['teacher_id']=$row['teacher_id'];
+                $_SESSION['teacher_name'] = $row['teacher_name'];
+                header("location:examinfo.php");
+                
+            }else{
+                echo "password invalid";
+            }
         }  
         else{  
                 echo "<h1> Login failed. Invalid username or password.</h1>";
                 // echo $count;  
             }
+
+        }
         mysqli_close($conn);     
-        }    
+        } 
 ?>
     
 
@@ -87,18 +109,18 @@
     <div class="student-info">
         <div class="container">
             <div class="result-searchbox">
-                <form id="form" method="post">
+                <form id="form" method="post" action="<?php echo $_SERVER['PHP_SELF'];?>" autocomplete="ON">
                     <div class="legend">LOGIN</div>
                     <fieldset  class="field">
                         <div class="form-handler">
                             <label>Username </label>
-                            <input type="email" name="username" class="round" id="username" placeholder="Enter Username" >
-                          
+                            <input type="email" name="username" class="round" id="username" placeholder="Enter Username" value="<?php echo $email ;?>">
+                          <small><?php echo $errEmail;?></small>
                         </div>
                         <div class="form-handler">
                             <label>Password </label>
-                            <input type="password" name="password" class="round" id="password" placeholder="Enter Password">
-                              
+                            <input type="password" name="password" class="round" id="password" placeholder="Enter Password" value="<?php echo $temp_password ;?>">
+                            <small><?php echo $errPassword;?></small>  
                         </div>
                         <div class="form-handler">
                             <label>Identity</label>
@@ -107,7 +129,7 @@
                                 <option value="student">Student</option>
                                 <option value="teacher">Teacher</option>
                             </select>
-                            <small ></small>
+                            <small ><?php echo $errMessage;?></small>
                         </div>
                         <!-- <div class="form-handler">
                         <span class="psw"> Forgot <a href="#">password?</a></span>
@@ -153,7 +175,7 @@
 
     <script type="text/javascript" src="./js/jquery3.3.1.js"></script>
     <script type="text/javascript" src="./js/index.js"></script>
-    <script type="text/javascript" src="./js/register1.js"></script>
+    <script type="text/javascript" src="./js/login.js"></script>
 
 </body>
 

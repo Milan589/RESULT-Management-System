@@ -97,12 +97,12 @@ function validateForm(){
                 showSuccess(address);
             }  
             //identity
-            if (identity.value == '') {
-                showError(identity, 'Must be selected');
-            }
-            else {
-                showSuccess(identity);
-            }
+            // if (identity.value == '') {
+            //     showError(identity, 'Must be selected');
+            // }
+            // else {
+            //     showSuccess(identity);
+            // }
             if (year.value == '') {
                 showError(year, 'Must be selected');
             }

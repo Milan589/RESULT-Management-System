@@ -1,70 +1,47 @@
 <?php
     include 'config.php';
-    $message = "";
-
-if(isset($_POST['submit'])){
-    
-        $fname = $_POST['name'];
-        $lname = $_POST['last'];
-        $username = $_POST['email'];
-        $password = password_hash($_POST['password'],PASSWORD_DEFAULT);
-        $phone = $_POST['phone'];
-        $address = $_POST['address'];
-        $year = $_POST['year'];
-        $dob = $_POST['dob'];
-        $college_id=$_POST['college'];
-        $db_table = $_POST['id'];
-
-            // echo "$db_table";
-            // $dob_c = "STR_TO_DATE(".$dob.",'dd/mm/yyyy' )";
-        // if($db_table == 'student'){
-        // $sql = "SELECT * FROM student WHERE student_username ='$username'";
-        // $res = mysqli_query($conn, $sql);
-        // if(mysqli_num_rows($res) > 0){
-        // echo  "<h1>Sorry... email already taken </h1>";  
-        //     } 
-        // else{
-
-        $sql = "INSERT INTO student(college_id,student_fname,student_lname,student_username,student_password ,student_phone,student_address,student_year,student_dob) VALUES ('$college_id','$fname', '$lname', '$username', '$password', '$phone', '$address', '$year','$dob')";   
-      //   }  
-
-      // }
-       // else 
-        if ($db_table == 'teacher') {   
-        // $sql = "SELECT * FROM teacher WHERE teacher_username ='$username'";
-        // $res = mysqli_query($conn, $sql);
-        // if(mysqli_num_rows($res) > 0){
-        // echo  "<h1>Sorry... email already taken </h1>";  
-        //     }   
-        //     else{
-            
-                 $sql = "INSERT INTO teacher(college_id,teacher_fname,teacher_lname,teacher_username,teacher_password ,teacher_phone,teacher_address,teacher_year,teacher_dob) VALUES ('$college_id','$fname', '$lname', '$username', '$password', '$phone', '$address', '$year','$dob')";
-            // }
-      
-        }
-
-
-
- // Try to execute the query
-    if (mysqli_query($conn, $sql) == TRUE) {
-        echo "success";
-            header("location: login.php");
-
-        }
-    else{
-           echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-mysqli_close($conn);
-}
+    $id = $_GET['id'];
+    $sql1 = "select * from student where student_id = '$id'";
+      // echo $sql1;
+    $res = mysqli_query($conn, $sql1);
+    $data = mysqli_fetch_assoc($res);
 ?>
-<!DOCTYPE html>
+<?php
+    if(isset($_POST['submit'])){
+
+            $fname = $_POST['name'];
+            $lname = $_POST['last'];
+            $username = $_POST['email'];
+            $phone = $_POST['phone'];
+            $address = $_POST['address'];
+            $year = $_POST['year'];
+            $dob = $_POST['dob'];
+            // $db_table = $_POST['id'];
+
+            $sql = "UPDATE `student` SET  `student_fname` ='$fname', `student_lname`= '$lname',`student_username` ='$username',`student_phone`= '$phone', `student_address` ='$address', `student_year` ='$year' , `student_dob` = 'dob' where `student_id` = '$id'";
+
+        mysqli_query($conn, $sql);
+
+        if (mysqli_affected_rows($conn) == 1) {
+        
+        header('location:studentinfo.php');
+       }
+       else{
+        echo "Data update failed".mysqli_error($conn);
+       }
+      }
+?>
+
+
+  <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>REGISTER</title>
+    <title>Add User</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/tablet.css">
     <link rel="stylesheet" href="css/mobile.css">
@@ -98,8 +75,7 @@ mysqli_close($conn);
                 <div class="col-sm"></div>
                 <div class="col-sm">
                     <div id="login">
-                        <span class="login"> <a href="login.php">Login</a> </span>
-                        <span class="login"> <a href="register.php">Sign Up</a></span>
+                        <span class="login"> <a href="logout.php">Logout</a></span>
                     </div>
                 </div>
                 <div class="col-sm">
@@ -113,61 +89,69 @@ mysqli_close($conn);
             </div>
         </div>
     </div>
-    <?php
-    $sql1= "SELECT * FROM college ";
-    $res1 = mysqli_query($conn,$sql1);
-    $data1=[];
-    if(mysqli_num_rows($res1)> 0){
-        while($row1 = mysqli_fetch_assoc($res1)){
-            array_unshift($data1,$row1);
-        }
-    }
-?>
     <div class="student-info">
         <div class="container">
             <div class="result-searchbox">
-                <form method="post" id="form" action="<?php echo $_SERVER['PHP_SELF']; ?> " autocomplete ="ON">
+                 <form method="post" id="form" action="<?php
+                $url= $_SERVER['PHP_SELF']."?id=".$id;
+                 echo $url ?>" >
                     <div class="legend">Register </div>
                     <fieldset class="field">
                         <div class="form-handler">
                             <label>First Name</label>
-                            <input type="text" name="name" placeholder="Enter firstname" class="round" id="fname">
+                            <input type="text" name="name" value="<?php echo $data['student_fname']; ?>" placeholder="Enter firstname" class="round" id="fname">
                             <small></small>
 
                         </div>
                         <div class="form-handler">
                             <label>Last Name</label>
-                            <input type="text" name="last" placeholder="Last Name" class="round" id="last">
+                            <input type="text" name="last" value="<?php echo $data['student_lname']; ?>" placeholder="Last Name" class="round" id="last">
                             <small></small>
 
                         </div>
                         <div class="form-handler">
                             <label>Email</label>
-                            <input type="email" name="email" placeholder="Email" class="round" id="email">
+                            <input type="email" name="email" value="<?php echo $data['student_username']; ?>" placeholder="Email" class="round" id="email">
                             <small></small>
 
                         </div>
-                        <div class="form-handler">
+                       <!--  <div class="form-handler">
                             <label>Password</label>
-                            <input type="password" name="password" placeholder="Password" class="round" id="password">
+                            <input type="password" name="password" value="<?php echo $data['student_password']; ?>" placeholder="Password" class="round" id="password">
                             <small></small>
-                        </div>
-                        <div class="form-handler">
-                            <label>Confirm Password</label>
-                            <input type="password" name="password2" placeholder="Confirm Password" class="round"
+                        </div> -->
+                       <!--  <div class="form-handler">
+                            <label>Confirm Password</label></td>
+                            <input type="password" name="password2"  placeholder="Confirm Password" class="round"
                                 id="password2">
                             <small></small>
-                        </div>
+                        </div> -->
                         <div class="form-handler">
                             <label>Mobile</label>
-                            <input type="number" name="phone" placeholder="Mobile Number" class="round" id="phone">
+                            <input type="number" name="phone" value="<?php echo $data['student_phone']; ?>" placeholder="Mobile Number" class="round" id="phone">
                             <small></small>
                         </div>
                         <div class="form-handler">
                             <label>Address</label>
-                            <input type="text" name="address" placeholder="Address" class="round" id="address">
+                            <input type="text" name="address" value="<?php echo $data['student_address']; ?>" placeholder="Address" class="round" id="address">
                             <small></small>
                         </div>
+    
+                        <div class="form-handler">
+                            <label class="format">Year</label>
+
+
+                            <select id="year" name="year" value="<?php echo $data['student_year']; ?>" >Year</select>
+                            <small></small>
+                        </div>
+                        <div class="form-handler">
+                            <label>Date of Birth</label>
+                        <input type="text" name="dob" class="round" value="<?php echo $data['student_dob']; ?>" placeholder="date of birth" id="dob">
+                                <small></small>
+                               
+                        </div>
+                        <span class="year">DD/MM/YYYY</span>
+                        
                         <div class="form-handler">
                             <label>Identity</label>
                             <select name = 'id'>
@@ -177,36 +161,6 @@ mysqli_close($conn);
                             </select>
                             <small></small>
                         </div>
-
-                         <div class="form-handler">
-                            <label>College</label>
-
-                            <select name = 'college'>
-                                <?php 
-                                foreach($data1 as $d1){
-                                 ?>
-                                <!-- <option value="">Select </option> -->
-                                <option value="<?php echo $d1['college_id'] ;?>"><?php echo $d1['college_name']; ?></option>
-                                
-                                <?php } ?>
-                            </select>
-                            <small></small>
-                        </div>
-    
-                        <div class="form-handler">
-                            <label class="format">Year</label>
-                            <select id="year" name="year">Year</select>
-                            <small></small>
-                        </div>
-                        <div class="form-handler">
-                        <label>Date of Birth</label>
-                        <input type="text" name="dob" class="round" placeholder="date of birth" id="dob">
-                              <small></small>       
-                        </div>
-                        <span class="year">YYYY/MM/DD</span>
-                
-                        
-
 
                         <div class="form-handler">
                             <button type="submit" class="button" name="submit" id="submit">Submit</button>
@@ -251,7 +205,8 @@ mysqli_close($conn);
     <script type="text/javascript" src="./js/jquery3.3.1.js"></script>
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <script type="text/javascript" src="./js/index.js"></script>
-   <script type="text/javascript" src="js/register2.js" ></script>
+   <script type="text/javascript" src="js/register1.js" ></script>
 
 </body>
+
 </html>
