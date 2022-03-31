@@ -1,18 +1,13 @@
  <?php
     session_start();
     include 'config.php';
-     $message= "";
+     $errMessage= "";
      $email=$temp_password= $db_table ="";
       if(isset($_POST['submit'])){
         $email = $_POST['username'];
         $temp_password = $_POST['password'];
         $db_table = $_POST['id'];
-
-
-        if(empty($db_table)){
-           echo "<h1> Identity Must be selected</h1>";
-        } 
-        
+           
         $sql = "SELECT * FROM student WHERE student_username = '$email'";  
         $result = mysqli_query($conn, $sql);
         $num_rows = mysqli_num_rows($result);
@@ -119,13 +114,13 @@
                         </div>
                         <div class="form-handler">
                             <label>Password </label>
-                            <input type="password" name="password" class="round" id="password" placeholder="Enter Password" value="<?php echo $temp_password ;?>">
+                            <input type="password" name="password" class="round" id="password" placeholder="Enter Password" value="<?php echo $temp_password ;?>" autocomplete="ON">
                             <small><?php echo $errPassword;?></small>  
                         </div>
                         <div class="form-handler">
                             <label>Identity</label>
-                            <select name = 'id' >
-                                <option value="">Select </option>
+                            <select id="sel" name ="id"  >
+                                <option value="" >Select </option>
                                 <option value="student">Student</option>
                                 <option value="teacher">Teacher</option>
                             </select>

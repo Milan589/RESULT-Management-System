@@ -165,7 +165,7 @@ mysqli_close($conn);
                        
                          <div class="form-handler">
                             <label>College</label>
-                            <select name = 'college'>
+                            <select name = 'college' id="college">
                                 <?php 
                                 foreach($data1 as $d1){
                                  ?>
@@ -191,7 +191,7 @@ mysqli_close($conn);
                          <span class="year">YYYY/MM/DD</span>
                           <div class="form-handler">
                             <label>Identity</label>
-                            <select name = 'id'>
+                            <select name = 'id' id="id">
                                 <!-- <option value="">Select </option> -->
                                 <option value="student">Student</option>
                                 <option value="teacher">Teacher</option>

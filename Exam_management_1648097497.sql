@@ -19,15 +19,15 @@ CREATE TABLE teacher(
 	teacher_fname VARCHAR(50),
 	teacher_lname VARCHAR(50),
     teacher_username VARCHAR(145),
-    teacher_password VARCHAR(50) NOT NULL,
+    teacher_password VARCHAR(512) NOT NULL,
     teacher_phone VARCHAR(15),
     teacher_address VARCHAR(150),
     teacher_is_admin VARCHAR(1),
 	teacher_year INT(10), 
 	teacher_dob DATE,
-    CONSTRAINT UNQ_temail UNIQUE(`teacher_username`);
     CONSTRAINT PK_teacher PRIMARY KEY (teacher_id),
-    CONSTRAINT FKteacher_college FOREIGN KEY (college_id) REFERENCES college(college_id)
+    CONSTRAINT FKteacher_college 
+    FOREIGN KEY (college_id) REFERENCES college(college_id)
     );
 
 CREATE TABLE subjects(
@@ -54,7 +54,6 @@ CREATE TABLE student(
     student_address VARCHAR(150),
 	student_year INT(10),
 	student_dob DATE,
-    CONSTRAINT UNQ_email UNIQUE(`student_username`)
     CONSTRAINT FKstudent_college FOREIGN KEY(college_id) REFERENCES college(college_id) ,
     CONSTRAINT FKstudent_course FOREIGN KEY(course_id) REFERENCES course(course_id)
     );
@@ -64,7 +63,6 @@ CREATE TABLE exam(
     subject_id INT(10),
     exam_date DATE,
     exam_year INT,
-    semester VARCHAR(4),
     CONSTRAINT FKexam_subject FOREIGN KEY(subject_id) REFERENCES subjects(subject_id)
     );
     
@@ -75,11 +73,8 @@ CREATE TABLE RESULT(
     marks_obtained INT,
     grade VARCHAR(2),
     CONSTRAINT FKresult_student FOREIGN KEY(student_id) REFERENCES student(student_id),
-    CONSTRAINT FKresult_exam FOREIGN KEY(exam_id) REFERENCES exam(exam_id),
-    CONSTRAINT UNIQUE (student_id, exam_id)
+    CONSTRAINT FKresult_exam FOREIGN KEY(exam_id) REFERENCES exam(exam_id)
     );
-    );
-
 
 
 INSERT INTO course (course_id,course_name,course_description)
