@@ -500,9 +500,9 @@ table{
     padding: 10px 40px 30px 40px;
     /* margin: 30px; */
 }
-fieldset {
+fieldset{
    
-    background: #fff;
+    background: #f0f0f0;
     border: 1px solid #226aea;
     /* border-top-left-radius: 20px; */
     /* border-top-right-radius: 20px; */
@@ -515,9 +515,9 @@ fieldset {
 }
 .year{
     color: #42A5FF;
-  margin-left: 10px;
-  display: block;
-  padding-top: 20px;
+    margin-left: 160px;
+    display: block;
+    padding-top: 20px;
     
 }
 .button{
@@ -531,15 +531,17 @@ fieldset {
     padding: 10px 15px;
     text-align: center;
     cursor: pointer;
-    display: flex;
+    /*display: flex;*/
     justify-content: center;
-    justify-items: center;margin: auto;
+    justify-items: center;
+    margin: auto;
 }
 /* login.html */
+
 .round{
-    
-   padding-left: 10px; 
-   padding-right: 10px;
+    width: 95%;
+  /* padding-left: 10px; 
+   padding-right: 20px;*/
    border-radius: 5px;
    box-sizing: border-box;
    border: 2px solid #42A5FF;
@@ -570,7 +572,7 @@ button a{
     display: block;
     justify-content:center;
 }
-.col-sm #student-Id{
+.col #student-Id{
     padding-left: 20px; 
 }
 #faculty{
@@ -798,31 +800,36 @@ table th,
 }
 
 /* formvalidation for register */
-.form-handler{
-    padding-right: 20px;
+.reg-form{
+    padding: 20px;
 }
-.form-handler label{
-    display: inline-block;
+.form-handler{
+    margin: auto;
+    padding: 10px ;
+    display: flex;
+    flex-direction: row;
+}
+.form-handler label{ 
+    display: flex;
+    flex-direction: row;
+    flex-basis: 150px;
     color: #42A5FF;
     font-weight: 700;
     font-size: 1rem;
-    padding-right: 10px;
-    padding-top: 20px;
-    padding-bottom: 10px;
+    padding: 5px;
 
 }
 
 
 .form-handler input{
+     width: 100%; 
     display: flex;
-    justify-content: center;
-    /*flex-direction: column;*/
+    flex-direction: row;
+    background-color: #fff;
     font-size: 18px;
-    /* margin-bottom: 8px; */
-    padding: 4px;
+    padding: 5px;
     border: 2px solid #42A5FF;
     border-radius: 5px;
-    width: 100%;
 }
 
 .form-handler input:focus{
@@ -843,17 +850,18 @@ table th,
 }
 
 .form-handler small{
+    flex-basis: 150px;
     position:absolute;
     display: block;
-    padding-bottom: 10px;
+    padding: 10px;
     color: #e74;
     visibility: hidden;
 }
 
 .form-handler.error small{
     display: block;
-   padding-bottom: 10px;
-   padding-left: 10px;
+    margin:25px 0px 20px 100px;
+    padding-bottom: 20px;
     visibility: visible;
 }
 #time{
@@ -870,7 +878,6 @@ table th,
     max-width: 600px;
 }
 .result-add{
-
     margin: 30px;
     background-color: #42A5FF ;
     border-radius: 2px solid;
@@ -894,10 +901,11 @@ table th,
     
 }
 .examfield{
-    background: #fff;
+    background-color: #f0f0f0;
     display: flex;
     justify-content: center;  
-}.button a{
+}
+.button a{
     text-decoration: none;
     color: #fff;
 }
@@ -926,3 +934,32 @@ padding: 10px;
 font-weight: 700;
 font-family:'Segoe UI', Tahoma, Geneva, Verdana, sans-serif ;
 }
+.button1{
+    display: inline-block;
+    font-size: 20px;
+    background-color:#42A5FF;
+    border-radius: 6px;
+    box-shadow:3px 8px 22px rgb(94,28,68,0.15) ;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+}
+.delete{
+    display: inline-block;
+    font-size: 20px;
+    background-color:#d62839;
+    border-radius: 6px;
+    box-shadow:3px 8px 22px rgb(94,28,68,0.15) ;
+    border: none;
+    padding: 10px;
+    margin: 10px;
+}
+.button1 a{
+    text-decoration: none;
+    color: #fff;
+}
+.delete a{
+    text-decoration: none;
+    color: #fff;
+}
+

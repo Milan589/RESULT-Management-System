@@ -1,3 +1,7 @@
+<?php
+    include 'config.php';
+
+ ?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -58,7 +62,7 @@
                 <div class="col-sm"></div>
                 <div class="col-sm">
                     <div id="login">
-                        <span class="login"><a href="logout.php">Logout</a> </span>
+                        <span class="login">Logout</a> </span>
                         <!-- <span class="login"> <a href="register.php">Sign Up</a></span> -->
                     </div>
                 </div>
@@ -70,24 +74,42 @@
             </div>
         </div>
     </div>
+        <?php
+    $sql1= "SELECT * FROM student ";
+    $res1 = mysqli_query($conn,$sql1);
+    $data1=[];
+    if(mysqli_num_rows($res1)> 0){
+        while($row1 = mysqli_fetch_assoc($res1)){
+            array_unshift($data1,$row1);
+        }
+    }
+?>
     <div class="student-info">
-        <div class="container">
+        <!-- <div class="container"> -->
             <div class="result-form">
                 <form method="post" id="form" class="add-result" action="">
                     <div class="legend">ADD RESULT</div>
-                    <fieldset>
+                    <fieldset class="field">
                         <div class="form-handler">
-                            <label for="student_id" class="labeling">Student_ID:</label>
+                            <label class="labeling">Student_ID:</label>
+                            <select name="student_id">
+                             <?php 
+                                foreach($data1 as $d1){
+                                 ?>
+                                 <option value="<?php echo $d1['student_id'] ;?>"><?php echo $d1['student_id']; ?></option>
+                                
+                                <?php } ?>
+                                </select>
                             <span>1</span>
                         </div>
                         <div class="form-handler">
-                            <label for="fname" class="labeling">First Name :</label>
-                            <span>Milan Chaudhary</span>
+                            <label class="labeling">First Name :</label>
+
+                            <span> <?php echo $d1['student_fname']; ?></span>
                         </div>
                         <div class="form-handler">
                             <label for="lname" class="labeling">Lastname :</label>
-
-                            <span>Chaudhary</span>
+                           <span> <?php echo $d1['student_lname']; ?></span>
                         </div>
                         <div class="form-handler">
                             <label for="faculty" class="labeling">Faculty :</label>
@@ -100,7 +122,7 @@
                             <small></small>
                         </div>
                         <div class="form-handler">
-                            <label class="labeling">Semester</label></td>
+                            <label class="labeling">Semester</label>
                             <select id="semester">
                                 <option value="">Select Semester</option>
                                 <option value="1">First</option>
@@ -120,92 +142,94 @@
                         <div class="row">
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">SAD :</label>
-                                    <input type="number" id="sad" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">SAD: </label>
+                                    <input type="number" id="sad" class="round" min="0" placeholder="marks">                 
+                                    <small></small> 
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <div class="form-handler">
+                                    <label for="lname">DAA: </label>
+                                    <input type="number" id="daa" class="round" min="0" placeholder=" marks">
                                     <small></small>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">DAA :</label>
-                                    <input type="number" id="daa" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">SM: </label>
+                                    <input type="number" id="sm" class="round" min="0" placeholder=" marks">
                                     <small></small>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">SM :</label>
-                                    <input type="number" id="sm" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">WEB: </label>
+                                    <input type="number" id="web" class="round" min="0" placeholder=" marks">
                                     <small></small>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">WEB :</label>
-                                    <input type="number" id="web" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">MM: </label>
+                                    <input type="number" id="mm" class="round" min="0" placeholder=" marks">
                                     <small></small>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">MM :</label>
-                                    <input type="number" id="mm" class="round" min="0" placeholder="Enter marks">
-                                    <small></small>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="form-handler">
-                                    <label for="lname">CRYPTO :</label>
-                                    <input type="number" id="crypt" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">CRYPTO: </label>
+                                    <input type="number" id="crypt" class="round" min="0" placeholder=" marks">
                                     <small></small>
                                 </div>
                             </div>
                         </div>
+
                         <div class="form-handler">
                             <label for="Pr marks" class="labeling">Practical Subject :</label>
                         </div>
                         <div class="row">
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">SAD PR:</label>
-                                    <input type="number" id="sadpr" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">SAD_PR:</label>
+                                    <input type="number" id="sadpr" class="round" min="0" placeholder="marks">
                                     <small></small>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">DAA PR :</label>
-                                    <input type="number" id="daapr" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">DAA_PR:</label>
+                                    <input type="number" id="daapr" class="round" min="0" placeholder="marks">
                                     <small></small>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">SM PR:</label>
-                                    <input type="number" id="smpr" class="round" min="0" placeholder="Enter marks">
-                                    <small></small>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-2">
-                                <div class="form-handler">
-                                    <label for="lname">WEB PR:</label>
-                                    <input type="number" id="webpr" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">SM_PR:</label>
+                                    <input type="number" id="smpr" class="round" min="0" placeholder=" marks">
                                     <small></small>
                                 </div>
                             </div>
 
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">MM PR :</label>
-                                    <input type="number" id="mmpr" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">WEB_PR:</label>
+                                    <input type="number" id="webpr" class="round" min="0" placeholder="marks">
+                                    <small></small>
+                                </div>
+                            </div>
+
+                            <div class="col-sm-2">
+                                <div class="form-handler">
+                                    <label for="lname">MM_PR:</label>
+                                    <input type="number" id="mmpr" class="round" min="0" placeholder="marks">
                                     <small></small>
                                 </div>
                             </div>
                             <div class="col-sm-2">
                                 <div class="form-handler">
-                                    <label for="lname">CRYPTO PR :</label>
-                                    <input type="number" id="cryptpr" class="round" min="0" placeholder="Enter marks">
+                                    <label for="lname">CRY_PR:</label>
+                                    <input type="number" id="cryptpr" class="round" min="0" placeholder="marks">
                                     <small></small>
                                 </div>
                             </div>
@@ -218,41 +242,96 @@
                     </fieldset>
                 </form>
             </div>
-        </div>
-        <footer class="foot-content">
-            <div class="container">
-                <div class="row">
-                    <div class="col-sm">
-                        <span class="foot">Quick Links</span>
-                        <span class="content">BIM College</span>
-                        <span class="content">Bsc.CSIT College</span>
-                        <span class="content">BCA College</span>
+        <!-- </div> -->
+    </div>
+    <div class="container">
+        <table>
+            <thead>
+                <tr>
+
+                    <th>Student_ID</th>
+                    <th>Name</th>
+                    <th>Last Name</th>
+                    <th>Faculty</th>
+                    <th>SAD</th>
+                    <th>DAA</th>
+                    <th>WEB</th>
+                    <th>SM</th>
+                    <th>MM</th>
+                    <th>CRYPT</th>
+                    <th>SAD PR</th>
+                    <th>DAA PR</th>
+                    <th>WEB PR</th>
+                    <th>SM PR</th>
+                    <th>MM PR</th>
+                    <th>CRYPT PR</th>
+
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>1</td>
+                    <td>Milan</td>
+                    <td>Chaudhary</td>
+                    <td>CSIT</td>
+                    <td>35</td>
+                    <td>40</td>
+                    <td>32</td>
+                    <td>38</td>
+                    <td>34</td>
+                    <td>40</td>
+                    <td>32</td>
+                    <td>38</td>
+                    <td>34</td>
+                    <td>40</td>
+                    <td>32</td>
+                    <td>34</td>
+
+                </tr>
+            </tbody>
+        </table>
+        <!-- <tr> -->
+        <!-- <td> <button type="submit" class="button">Submit</button></td> -->
+        <!-- <button type="button" class="delete-row">Delete Result</button> -->
+        <!-- </tr> -->
+
+    </div>
+
+
+    <footer class="foot-content">
+        <div class="container">
+            <div class="row">
+                <div class="col-sm">
+                    <span class="foot">Quick Links</span>
+                    <span class="content">BIM College</span>
+                    <span class="content">Bsc.CSIT College</span>
+                    <span class="content">BCA College</span>
+                </div>
+                <div class="col-sm">
+                    <span class="foot">Contact Us</span>
+                    <div class="contact-content">
+                        <i class="fas fa-map-marker-alt"></i><span> Gaushala, Kathmandu</span>
                     </div>
-                    <div class="col-sm">
-                        <span class="foot">Contact Us</span>
-                        <div class="contact-content">
-                            <i class="fas fa-map-marker-alt"></i><span> Gaushala, Kathmandu</span>
-                        </div>
-                        <div class="contact-content">
-                            <i class="far fa-envelope"></i><span>info@vn.edu.np </span>
-                        </div>
-                        <div class="contact-content">
-                            <i class="fas fa-phone-alt"></i><span>01-4479744</span>
-                        </div>
+                    <div class="contact-content">
+                        <i class="far fa-envelope"></i><span>info@vn.edu.np </span>
                     </div>
-                    <div class="col-sm">
-                        <span class="foot">Developed By</span>
-                        <span class="info-contact">OUR<span class="more-info">TEAM</span></span>
-                        <span class="copyright">Copyright &copy;2021 All rights reserved</span>
+                    <div class="contact-content">
+                        <i class="fas fa-phone-alt"></i><span>01-4479744</span>
                     </div>
                 </div>
-        </footer>
+                <div class="col-sm">
+                    <span class="foot">Developed By</span>
+                    <span class="info-contact">OUR<span class="more-info">TEAM</span></span>
+                    <span class="copyright">Copyright &copy;2021 All rights reserved</span>
+                </div>
+            </div>
+    </footer>
 
 
-        <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
-        <script type="text/javascript" src="./js/jquery3.3.1.js"></script>
-        <script type="text/javascript" src="./js/index.js"></script>
-        <script type="text/javascript" src="./js/addresult1.js"></script>
+    <!-- <script src="https://code.jquery.com/jquery-3.5.1.min.js"></script> -->
+    <script type="text/javascript" src="./js/jquery3.3.1.js"></script>
+    <script type="text/javascript" src="./js/index.js"></script>
+    <script type="text/javascript" src="./js/addresult1.js"></script>
 </body>
 
 </html>

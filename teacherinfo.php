@@ -119,8 +119,8 @@
                     <td><?php echo $d['teacher_year'] ;?> </td>
                     <td><?php echo $d['teacher_dob'] ;?> </td>
                 
-                    <td><a href="updateteacher.php?id=<?php echo $d['teacher_id']; ?> ">Edit</a></td>
-                    <td><a href="deleteteacher.php?id=<?php echo $d['teacher_id']; ?> ">Delete</a></td>
+                    <td class="button1"><a href="updateteacher.php?id=<?php echo $d['teacher_id']; ?> ">Update</a></td>
+                    <td class="delete"><a href="deleteteacher.php?id=<?php echo $d['teacher_id']; ?> ">Delete</a></td>
                 </tr>
             </tbody>
             <?php } ?>

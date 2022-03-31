@@ -208,8 +208,7 @@
     <script type="text/javascript" src="./js/jquery3.3.1.js"></script>
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <script type="text/javascript" src="./js/index.js"></script>
-   <script type="text/javascript" src="js/register1.js" ></script>
-
+    <script type="text/javascript" src="./js/register2.js" ></script>
 </body>
 
 </html>

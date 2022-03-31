@@ -96,13 +96,13 @@ function validateForm(){
             else {
                 showSuccess(address);
             }  
-            //identity
-            // if (identity.value == '') {
-            //     showError(identity, 'Must be selected');
-            // }
-            // else {
-            //     showSuccess(identity);
-            // }
+           // identity
+            if (identity.value == '') {
+                showError(identity, 'Must be selected');
+            }
+            else {
+                showSuccess(identity);
+            }
             if (year.value == '') {
                 showError(year, 'Must be selected');
             }

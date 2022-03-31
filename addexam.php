@@ -1,3 +1,29 @@
+<?php
+    include 'config.php';
+    $message = "";
+if(isset($_POST['submit'])){
+    
+        $subject = $_POST['subject'];
+        $eod = $_POST['eod'];
+        $semester = $_POST['semester'];
+        $year = $_POST['year'];
+      
+    
+        $sql = "INSERT INTO exam(subject_id,exam_date,exam_year,semester) VALUES ('$subject','$eod', '$year', '$semester')";   
+
+ // Try to execute the query
+    if (mysqli_query($conn, $sql) == TRUE) {
+        // echo "success";
+            header("location: examdetail.php");
+
+        }
+    else{
+           echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+mysqli_close($conn);
+    }
+
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -50,65 +76,64 @@
             </div>
         </div>
     </div>
+<?php
+    $sql1= "SELECT * FROM subjects ";
+    $res1 = mysqli_query($conn,$sql1);
+    $data1=[];
+    if(mysqli_num_rows($res1)> 0){
+        while($row1 = mysqli_fetch_assoc($res1)){
+            array_unshift($data1,$row1);
+        }
+    }
+?>
     <div class="student-info">
         <div class="container">
             <div class="result-form">
-                <form method="post" id="form" class="add-result" action="">
+                <form method="post" id="form" class="add-result" action="<?php echo $_SERVER['PHP_SELF']; ?> ">
                     <div class="legend">ADD EXAM</div>
-                    <fieldset>
+                    <fieldset class="field">
                         <div class="form-handler">
-                            <label for="subject" class="labeling">Subject </label>
+                            <label for="subject" >Subject </label>
                             <select id="subject" name="subject">
-                                <option value="">Select </option>
-                                <option value="sad">SAD</option>
-                                <option value="daa">DAA</option>
-                                <option value="sm">SM</option>
-                                <option value="web">WEB</option>
-                                <option value="mm">MM</option>
-                                <option value="crypto">CRYPTO</option>
+                                 <?php 
+                                foreach($data1 as $d1){
+                                 ?>
+                                 <option value="<?php echo $d1['subject_id'] ;?>"><?php echo $d1['subject_name']; ?></option>
+                                
+                                <?php } ?>
                             </select>
                             <small></small>
                         </div>
                         <div class="form-handler">
-                            <label class="labeling">Semester</label>
+                            <label >Semester</label>
                             <select id="semester" name="semester">
                                 <option value="">Select Semester</option>
-                                <option value="">First</option>
-                                <option value="2">Second</option>
-                                <option value="3">Third</option>
-                                <option value="4">Fourth</option>
-                                <option value="5">Fifth</option>
-                                <option value="6">Sixth</option>
-                                <option value="7">Seventh</option>
-                                <option value="8">Eighth</option>
+                                <option value="First Semester">First Semester</option>
+                                <option value="Second Semester">Second Semester</option>
+                                <option value="Third Semester">Third Semester</option>
+                                <option value="Fourth Semester">Fourth Semester</option>
+                                <option value="Fifth Semester">Fifth Semester</option>
+                                <option value="Sixth Semester">Sixth Semester</option>
+                                <option value="Seventh Semester">Seventh Semester</option>
+                                <option value="Eighth Semester">Eighth Semester</option>
                             </select>
                             <small></small>
                         </div>
-                        <div class="form-handler">
-                            <label class="labeling">Exam Date</label>
-                            <div class="row">
-                                <div class="col-sm">
-                                    <input type="text" name="dob" class="round" placeholder="Enter exam date" id="dob">
-                                    <small></small>
-
-
-                                    <span class="year">YYYY/MM/DD</span>
-                                </div>
-                            </div>
-                        </div>
-                        <div class="form-handler">
-                            <label class="labeling">Year</label>
-
-
+                         <div class="form-handler">
+                            <label>Year</label>
                             <select id="year" name="year">Year</select>
                             <small></small>
                         </div>
-
-                        <div class="row">
+                        <div class="form-handler">
+                            <label>Exam Date</label>
+                                    <input type="text" name="eod" class="round" placeholder="Enter exam date" id="dob">
+                                    <small></small>
+                            </div>
+                                 <span class="year">YYYY/MM/DD</span>
                             <div class="form-handler">
                                 <button type="submit" class="button" id="submit" name="submit">Submit</button>
                             </div>
-                        </div>
+                     
                     </fieldset>
                 </form>
             </div>
