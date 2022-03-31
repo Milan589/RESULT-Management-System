@@ -1,6 +1,9 @@
 <?php
+  session_start();
     include 'config.php';
     $message = "";
+      if(isset($_SESSION['teacher_id'])){
+
 if(isset($_POST['submit'])){
     
         $subject = $_POST['subject'];
@@ -22,6 +25,9 @@ if(isset($_POST['submit'])){
         }
 mysqli_close($conn);
     }
+}else{
+    header("location: login.php");
+}
 
 ?>
 <!DOCTYPE html>

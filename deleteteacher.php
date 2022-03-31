@@ -1,4 +1,6 @@
 <?php
+  session_start();
+if(isset($_SESSION['teacher_id'])){
 include 'config.php';
 $id = $_GET['id'];
 //connect to database
@@ -11,4 +13,7 @@ mysqli_query($conn, $sql);
 
 //redirect to listing page
 header('location:teacherinfo.php');
+}else{
+  header('location:login.php');
+}
 ?>

@@ -1,10 +1,16 @@
 <?php
+  session_start();
+   if(isset($_SESSION['teacher_id'])){
     include 'config.php';
     $id = $_GET['id'];
     $sql1 = "select * from student where student_id = '$id'";
       // echo $sql1;
     $res = mysqli_query($conn, $sql1);
     $data = mysqli_fetch_assoc($res);
+}
+else{
+     header('location:login.php');
+}
 ?>
 <?php
     if(isset($_POST['submit'])){

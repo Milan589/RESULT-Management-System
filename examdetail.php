@@ -1,4 +1,6 @@
 <?php
+  session_start();
+  if(isset($_SESSION['teacher_id'])){
    include 'config.php';
     $sql= "SELECT * FROM exam ";
     $res = mysqli_query($conn,$sql);
@@ -9,6 +11,9 @@
             array_unshift($data,$row);
         }
     }
+}else{
+      header('location:login.php');
+}
 
 ?>
 <!DOCTYPE html>

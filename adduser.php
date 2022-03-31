@@ -1,7 +1,9 @@
 <?php
+session_start();
     include 'config.php';
+    if(isset($_SESSION['teacher_id'])){
     $message = "";
-
+    
 if(isset($_POST['submit'])){
     
         $fname = $_POST['name'];
@@ -51,7 +53,13 @@ if(isset($_POST['submit'])){
     else{
            echo "Error: " . $sql . "<br>" . $conn->error;
         }
+
 mysqli_close($conn);
+}
+
+}
+else{
+   header('location:login.php');
 }
 ?>
 <!DOCTYPE html>
