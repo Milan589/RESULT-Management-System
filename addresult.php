@@ -1,3 +1,28 @@
+<?php
+    include 'config.php';
+    $message = "";
+
+if(isset($_POST['submit'])){
+    //obtain values from form
+
+    $sql = "INSERT INTO 
+    `result`(student_id,exam_id, marks_obtained, grade)
+    values(1,1,38,'C+')";
+
+
+ // Try to execute the query
+    if (mysqli_query($conn, $sql) == TRUE) {
+        echo "success";
+            header("location: resultinfo.php");
+
+        }
+    else{
+           echo "Error: " . $sql . "<br>" . $conn->error;
+        }
+mysqli_close($conn);
+}
+?>
+
 <!DOCTYPE html>
 <html lang="en">
 
@@ -89,7 +114,7 @@
 
                             <span>Chaudhary</span>
                         </div>
-                        <div class="form-handler">
+                        <!-- <div class="form-handler">
                             <label for="faculty" class="labeling">Faculty :</label>
                             <select id="faculty">
                                 <option value="">Select </option>
@@ -98,8 +123,8 @@
                                 <option value="BCA">BCA</option>
                             </select>
                             <small></small>
-                        </div>
-                        <div class="form-handler">
+                        </div> -->
+                        <!-- <div class="form-handler">
                             <label class="labeling">Semester</label></td>
                             <select id="semester">
                                 <option value="">Select Semester</option>
@@ -112,7 +137,7 @@
                                 <option value="7">Seventh</option>
                                 <option value="8">Eighth</option>
                             </select>
-                            <small></small>
+                            <small></small> -->
                         </div>
                         <div class="form-handler">
                             <label for="subject" class="labeling">Theory Subject :</label>
