@@ -40,7 +40,7 @@
                 <div class="col-sm">
                     <div id="login">
                         <span class="login"> <a href="logout.php">Logout</a> </span>
-                        <span class="login"> <a href="register.php">Sign Up</a></span>
+                        <!-- <span class="login"> <a href="register.php">Sign Up</a></span> -->
                     </div>
                 </div>
                 <div class="col-sm">
@@ -59,10 +59,10 @@
                     <fieldset class="field">
                         <div class="form-handler">
                             <label>Student_ID</label>
-                            <input type="number" name="symbol" class="round" id="symbol" placeholder="Enter Symbol Number">
+                            <input type="number" name="symbol" class="round" id="symbol" placeholder="Enter Student ID">
                             <small></small>
                         </div>
-                        <div class="form-handler">
+                            <div class="form-handler">
                             <label>Semester</label></td>
                             <select id="semester">
                                 <option value="">Select Semester</option>
@@ -81,12 +81,14 @@
                             <label>Year</label></td>
                             <select id="year">Year</select>
                         </div>
+
                         <div class="form-handler">
-                            <label>Date of Birth</label>
-                            <input type="text" name="dob" class="round" id="dob" placeholder="">
-                            <small></small>
-                            <span class="year">YYYY/MM/DD</span>
+                            <label>DOB</label>
+                            <input type="text" name="dob" class="round" id="dob" placeholder="Enter date of birth">
+                            <small></small>                         
                         </div>
+                         <span class="year">YYYY/MM/DD</span>
+                    
                         <div class="form-handler">
                             <button type="submit" class="button">Submit</button>
                         </div>

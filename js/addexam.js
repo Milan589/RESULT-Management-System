@@ -3,10 +3,9 @@ const semester = document.getElementById("semester");
 const year = document.getElementById("year");
 
 form.addEventListener('submit', (event) => {
-    event.preventDefault();
+    // event.preventDefault();
     validateForm();
     validateDOB(dob);
-
 
     if (isFormValid() == true) {
         form.submit();

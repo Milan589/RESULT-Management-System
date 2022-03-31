@@ -52,14 +52,32 @@
     </div>
     <div class="student-info">
         <div class="container">
-            <div class="container2">
+            <!-- <div class="container2"> -->
+                <div class="row"> 
+                    <div class="col-6">
+                
                 <div class="result-add">
+                    
                     <h1>RESULT</h1>
                     <div class="examfield">
                         <div class="button"><a href="addresult.php"> ADD RESULT</a></div>
                         <div class="button"><a href="displayresult.php">DISPLAY RESULT</a></div>
                     </div>
+                    </div>
                 </div>
+              
+                 
+                 <div class="col-6"> 
+                <div class="result-add">
+                    <h1>EXAM</h1>
+                    <div class="examfield">
+                        <div class="button"><a href="addexam.php">ADD EXAM</a></div>
+                        <div class="button"><a href="examdetail.php">DISPLAY EXAM</a></div>
+                    </div>
+                </div>
+        </div>
+      </div> 
+                
                 <div class="result-add">
                     <h1>USER</h1>
                     <div class="examfield">
@@ -71,15 +89,6 @@
                         </div>
                     </div>
                 </div>
-                <div class="result-add">
-                    <h1>EXAM</h1>
-                    <div class="examfield">
-                        <div class="button"><a href="addexam.php">ADD EXAM</a></div>
-                        <div class="button"><a href="examdetail.php">DISPLAY EXAM</a></div>
-                    </div>
-                </div>
-            </div>
-
         </div>
     </div>
 

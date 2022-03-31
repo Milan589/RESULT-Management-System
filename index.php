@@ -48,7 +48,7 @@
                 </div>
             </div>
             <div class="know-more">
-                <span  ><a href="about.html" id="ank"> Know More</a></span>
+                <span  ><a href="about.php" id="ank"> Know More</a></span>
             </div>
         </div>
     </div>
