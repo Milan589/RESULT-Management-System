@@ -3,8 +3,8 @@
 $servername ="localhost";
 $username ="root";
 $password ="";
-// $dbname = "rms";
-$dbname = "resultmanagement";
+$dbname = "rms";
+// $dbname = "resultmanagement";
 
 //create connection
 $conn=mysqli_connect($servername,$username,$password,$dbname);

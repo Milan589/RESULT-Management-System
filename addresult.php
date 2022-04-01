@@ -1,26 +1,39 @@
 <?php
-    include 'config.php';
-    $message = "";
+//     include 'config.php';
+//     $message    = "";
+//     $student    = $_GET['id'];
+//     $semester   = $_GET['sem'];
+//     $exam_year  = $_GET['year'];
+//     $SQL        = "Select S1.subject_name, S1.subject_id from 
+//     EXAM E LEFT JOIN RESULT R ON E.exam_id=R.exam_id
+//     LEFT JOIN STUDENT S ON R.student_id=S.student_id
+//     LEFT JOIN SUBJECTS S1 ON E.subject_id=S1.subject_id
+//     Where E.semester='$semester'";
+//     if(mysqli_num_rows($res)> 0){
+//         while($row = mysqli_fetch_assoc($res)){
+//             array_unshift($data,$row);
+//         }
+//     }
 
-if(isset($_POST['submit'])){
-    //obtain values from form
+// if(isset($_POST['submit'])){
+//     //obtain values from form
 
-    $sql = "INSERT INTO 
-    `result`(student_id,exam_id, marks_obtained, grade)
-    values(1,1,38,'C+')";
+//     $sql = "INSERT INTO 
+//     `result`(student_id,exam_id, marks_obtained, grade)
+//     values(1,1,38,'C+')";
 
 
- // Try to execute the query
-    if (mysqli_query($conn, $sql) == TRUE) {
-        echo "success";
-            header("location: resultinfo.php");
+//  // Try to execute the query
+//     if (mysqli_query($conn, $sql) == TRUE) {
+//         echo "success";
+//             header("location: resultinfo.php");
 
-        }
-    else{
-           echo "Error: " . $sql . "<br>" . $conn->error;
-        }
-mysqli_close($conn);
-}
+//         }
+//     else{
+//            echo "Error: " . $sql . "<br>" . $conn->error;
+//         }
+// mysqli_close($conn);
+// }
 ?>
 
 <!DOCTYPE html>
