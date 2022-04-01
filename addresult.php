@@ -1,29 +1,4 @@
-<?php
-    include 'config.php';
-       $message = "";
 
-if(isset($_POST['submit'])){
-    
-        $sad = $_POST['sad'];
-        $daa = $_POST['daa'];
-        $web = $_POST['web'];
-        $mm = $_POST['mm'];
-        $sm = $_POST['sm'];
-        $crypt = $_POST['crypt'];
-        $sadpr = $_POST['sadpr'];
-        $daapr = $_POST['daapr'];
-        $webpr = $_POST['webpr'];
-        $mmpr = $_POST['mmpr'];
-        $smpr = $_POST['smpr'];
-        $cryptpr = $_POST['cryptpr'];
-
-     
-        }
-
-        
-        
-
- ?>
 <!DOCTYPE html>
 <html lang="en">
 

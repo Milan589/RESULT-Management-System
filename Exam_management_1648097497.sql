@@ -77,6 +77,7 @@ CREATE TABLE RESULT(
     );
 
 
+
 INSERT INTO course (course_id,course_name,course_description)
     VALUES (1,'BIM','Bachelor of Information Management');
 INSERT INTO course (course_id,course_name,course_description)
@@ -189,7 +190,12 @@ insert into result
 insert into result
     values(6,202,40,'A');
     
-select * from result;
+Select S1.subject_name, S1.subject_id from 
+EXAM E LEFT JOIN RESULT R ON E.exam_id=R.exam_id
+LEFT JOIN STUDENT S ON R.student_id=S.student_id
+LEFT JOIN SUBJECTS S1 ON E.subject_id=S1.subject_id
+Where S.student_id=1;
+
     
             
     
