@@ -3,13 +3,13 @@
     $message    = "";
     $student    = $_GET['id'];
     $semester   = $_GET['sem'];
-    echo "Semester".$semester;
+    echo "Semester:".$semester;
     // $exam_year  = $_GET['year'];
-    $SQL        = "Select DISTINCT S1.subject_name, S1.subject_id from 
-    EXAM E INNER JOIN RESULT R ON E.exam_id=R.exam_id
-    INNER JOIN STUDENT S ON R.student_id=S.student_id
+    $SQL        = "Select  S1.subject_name, S1.subject_id, e.exam_id  from 
+    EXAM E LEFT JOIN RESULT R ON E.exam_id=R.exam_id
+    LEFT JOIN STUDENT S ON R.student_id=S.student_id
     INNER JOIN SUBJECTS S1 ON E.subject_id=S1.subject_id
-    Where E.semester='$semester'";
+    Where E.semester='$semester' GROUP BY S1.subject_id";
     
 
     //obtain values from form
@@ -39,7 +39,7 @@
         if(isset($_POST['submit'])){
             $value[$data1['subject_name']] = $_POST[$data1['subject_name']];
             $mark                          = $_POST[$data1['subject_name']];
-            $exam_id                       = $data1['subject_id'];
+            $exam_id                       = $data1['exam_id'];
             $insert_exam = "INSERT INTO 
                     `result`(student_id,exam_id, marks_obtained, grade)
                     values('$student','$exam_id','$mark','C+') 
