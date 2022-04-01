@@ -1,4 +1,4 @@
-<?php
+ <?php
 $id = $_GET['id'];
 include 'config.php';
 
@@ -6,11 +6,11 @@ include 'config.php';
     
         $subject = $_POST['subject'];
         $semester = $_POST['semester'];
-        $examdate = $_POST['examdate'];
         $year = $_POST['year'];
-        
+        $eod = $_POST['eod'];
+        echo "<h1>MY SUBJECT_ID::</h1>".$subject;
 
-        $sql = "UPDATE exam set  subject ='$subject', semester= '$semester',  examdate = 'dob', year= '$year' where exam_id = '$id'";
+        $sql = "UPDATE exam set  subject_id ='$subject', semester= '$semester',  exam_date = '$eod', exam_year= '$year' where exam_id = '$id'";
 
     mysqli_query($conn, $sql);
 
@@ -27,8 +27,8 @@ include 'config.php';
   // echo $sql1;
   $res = mysqli_query($conn, $sql1);
   $data = mysqli_fetch_assoc($res);
-  //print_r($data);
-?>
+  print_r($data);
+?> 
 <!DOCTYPE html>
 <html lang="en">
 
@@ -101,52 +101,57 @@ include 'config.php';
             </div>
         </div>
     </div>
+    <?php
+    $sql2= "SELECT * FROM subjects ";
+    $res2 = mysqli_query($conn,$sql2);
+    $data2=[];
+    if(mysqli_num_rows($res2)> 0){
+        while($row2 = mysqli_fetch_assoc($res2)){
+            array_unshift($data2,$row2);
+        }
+    }
+?>
      <div class="student-info">
         <div class="container">
             <div class="result-form">
-                <form method="post" id="form" class="add-result" action="">
+                <form method="post" id="form" class="add-result"  action="<?php
+                $url= $_SERVER['PHP_SELF']."?id=".$id;
+                 echo $url ?>">
                     <div class="legend">ADD EXAM</div>
                     <fieldset>
                         <div class="form-handler">
                             <label for="subject" class="labeling">Subject </label>
                             <select id="subject" name="subject">
-                                <option value="">Select </option>
-                                <option value="sad">SAD</option>
-                                <option value="daa">DAA</option>
-                                <option value="sm">SM</option>
-                                <option value="web">WEB</option>
-                                <option value="mm">MM</option>
-                                <option value="crypto">CRYPTO</option>
+                                  <?php 
+                                foreach($data2 as $d2){
+                                 ?>
+                                 <option value="<?php echo $d2['subject_id'] ;?>"><?php echo $d2['subject_name']; ?></option>
+                                
+                                <?php } ?>
                             </select>
                             <small></small>
                         </div>
                         <div class="form-handler">
                             <label class="labeling">Semester</label>
                             <select id="semester" name="semester">
-                                <option value="">Select Semester</option>
-                                <option value="">First</option>
-                                <option value="2">Second</option>
-                                <option value="3">Third</option>
-                                <option value="4">Fourth</option>
-                                <option value="5">Fifth</option>
-                                <option value="6">Sixth</option>
-                                <option value="7">Seventh</option>
-                                <option value="8">Eighth</option>
+                               <option value="">Select Semester</option>
+                                <option value="First Semester">First Semester</option>
+                                <option value="Second Semester">Second Semester</option>
+                                <option value="Third Semester">Third Semester</option>
+                                <option value="Fourth Semester">Fourth Semester</option>
+                                <option value="Fifth Semester">Fifth Semester</option>
+                                <option value="Sixth Semester">Sixth Semester</option>
+                                <option value="Seventh Semester">Seventh Semester</option>
+                                <option value="Eighth Semester">Eighth Semester</option>
                             </select>
                             <small></small>
                         </div>
                         <div class="form-handler">
                             <label class="labeling">Exam Date</label>
-                            <div class="row">
-                                <div class="col-sm">
-                                    <input type="text" name="examdate" class="round" placeholder="Enter exam date" id="dob">
-                                    <small></small>
-
-
-                                    <span class="year">YYYY/MM/DD</span>
-                                </div>
-                            </div>
+                                    <input type="text" name="eod" class="round" placeholder="Enter exam date" id="dob">
+                                    <small></small>                                  
                         </div>
+                        <span class="year">YYYY/MM/DD</span>
                         <div class="form-handler">
                             <label class="labeling">Year</label>
 

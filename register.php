@@ -42,9 +42,6 @@ if(isset($_POST['submit'])){
             // }
       
         }
-
-
-
  // Try to execute the query
     if (mysqli_query($conn, $sql) == TRUE) {
         echo "success";
@@ -124,30 +121,27 @@ mysqli_close($conn);
     }
 ?>
     <div class="student-info">
-        <div class="container">
-            <div class="result-searchbox">
-                <form method="post" id="form" action="<?php echo $_SERVER['PHP_SELF']; ?> " autocomplete ="ON">
-                    <div class="legend">Register </div>
-                    <fieldset class="field">
-                        <div class="form-handler">
-                            <label>First Name</label>
-                            <input type="text" name="name" placeholder="Enter firstname" class="round" id="fname">
+            <div class="container">
+                <div class="result-searchbox">
+                    <form method="post" id="form" action="<?php echo $_SERVER['PHP_SELF']; ?> " autocomplete ="ON">
+                        <div class="legend">Register </div>
+                        <fieldset class="field">
+                            <div class="form-handler">                     
+                                <label>First Name</label>                  
+                                <input type="text" name="name" placeholder="Enter firstname" class="round" id="fname">              
+                                <small></small>
+                            </div>
+                            <div class="form-handler">                               
+                                <label>Last Name</label> 
+                                <input type="text" name="last" placeholder="Last Name" class="round" id="last">                             
+                                <small></small>
+                            </div>
+                            <div class="form-handler">                              
+                            <label>Email</label>                           
+                            <input type="email" name="email" placeholder="Email" class="round" id="email">                           
                             <small></small>
-
                         </div>
-                        <div class="form-handler">
-                            <label>Last Name</label>
-                            <input type="text" name="last" placeholder="Last Name" class="round" id="last">
-                            <small></small>
-
-                        </div>
-                        <div class="form-handler">
-                            <label>Email</label>
-                            <input type="email" name="email" placeholder="Email" class="round" id="email">
-                            <small></small>
-
-                        </div>
-                        <div class="form-handler">
+                        <div class="form-handler">                            
                             <label>Password</label>
                             <input type="password" name="password" placeholder="Password" class="round" id="password">
                             <small></small>
@@ -159,7 +153,7 @@ mysqli_close($conn);
                             <small></small>
                         </div>
                         <div class="form-handler">
-                            <label>Mobile</label>
+                         <label>Mobile</label>
                             <input type="number" name="phone" placeholder="Mobile Number" class="round" id="phone">
                             <small></small>
                         </div>
@@ -168,19 +162,9 @@ mysqli_close($conn);
                             <input type="text" name="address" placeholder="Address" class="round" id="address">
                             <small></small>
                         </div>
-                        <div class="form-handler">
-                            <label>Identity</label>
-                            <select name = 'id'>
-                                <!-- <option value="">Select </option> -->
-                                <option value="student">Student</option>
-                                <option value="teacher">Teacher</option>
-                            </select>
-                            <small></small>
-                        </div>
-
+                       
                          <div class="form-handler">
                             <label>College</label>
-
                             <select name = 'college'>
                                 <?php 
                                 foreach($data1 as $d1){
@@ -199,13 +183,22 @@ mysqli_close($conn);
                             <small></small>
                         </div>
                         <div class="form-handler">
-                        <label>Date of Birth</label>
-                        <input type="text" name="dob" class="round" placeholder="date of birth" id="dob">
+                            <label>DOB</label>
+                            <input type="text" name="dob" class="round" placeholder="date of birth" id="dob">
                               <small></small>       
+                            
+                         </div>
+                         <span class="year">YYYY/MM/DD</span>
+                          <div class="form-handler">
+                            <label>Identity</label>
+                            <select name = 'id'>
+                                <!-- <option value="">Select </option> -->
+                                <option value="student">Student</option>
+                                <option value="teacher">Teacher</option>
+                            </select>
+                            <small></small>
                         </div>
-                        <span class="year">YYYY/MM/DD</span>
-                
-                        
+
 
 
                         <div class="form-handler">

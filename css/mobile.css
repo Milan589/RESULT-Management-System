@@ -68,12 +68,8 @@ legend{
     border: none;
   }
   fieldset {
-      width:max-content;
-      height: fit-content;
-      background: #fff;
+      background: #f0f0f0;
       border: 1px solid #226aea;
-      border-top-left-radius: 20px;
-      border-top-right-radius: 20px;
       border-bottom-left-radius: 40px;
       border-bottom-right-radius: 40px;
       box-shadow: 0 8px 8px -4px #42A5FF;
@@ -273,12 +269,53 @@ h3 span{
     #time{
         display: none;
     }
-    .form-handler input{
-        display: flex;
-        font-size: 18px;
-        padding: 4px;
-        border: 2px solid #42A5FF;
-        border-radius: 5px;
-        width: auto;
-    }
+    
+.form-handler{
+    margin: auto;
+    padding: 10px 10px 0px 10px;
+}
+.form-handler .col-sm-4{
+    /* display: flex;
+    justify-content: flex-start; */
+}
+.form-handler{
+    margin: auto;
+    padding: 10px ;
+    display: block;
+
+}
+.form-handler label{ 
+    display: block;   
+    color: #42A5FF;
+    font-weight: 700;
+    font-size: 1rem;
+    /* padding: 5px; */
+}
+
+
+.form-handler input{
+    width: auto;
+    display: block;
+    background-color: #fff;
+    font-size: 18px;
+    /* margin-bottom: 8px; */
+    /* padding: 4px; */
+    border: 2px solid #42A5FF;
+    border-radius: 5px;
+}
+
+.form-handler.error small{
+    display: block;
+    margin: auto;
+    padding-bottom: 20px;
+    /* padding: 50px; */
+    visibility: visible;
+}
+.year{
+    color: #42A5FF;
+    margin-left: 20px;
+    display: block;
+    padding-top: 20px;
+    
+}
 }

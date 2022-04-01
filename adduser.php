@@ -1,6 +1,6 @@
 <?php
-include 'config.php';
-  $username_err = "";
+    include 'config.php';
+    $message = "";
 
 if(isset($_POST['submit'])){
     
@@ -12,18 +12,36 @@ if(isset($_POST['submit'])){
         $address = $_POST['address'];
         $year = $_POST['year'];
         $dob = $_POST['dob'];
+        $college_id=$_POST['college'];
         $db_table = $_POST['id'];
 
             // echo "$db_table";
             // $dob_c = "STR_TO_DATE(".$dob.",'dd/mm/yyyy' )";
-        $sql = "INSERT INTO student(student_fname,student_lname,student_username,student_password ,student_phone,student_address,student_year,student_dob) VALUES ('$fname', '$lname', '$username', '$password', '$phone', '$address', '$year','$dob')";
-        if ($db_table == 'teacher') {
-            // code...
-            $sql = "INSERT INTO teacher(teacher_fname,teacher_lname,teacher_username,teacher_password ,teacher_phone,teacher_address,teacher_year,teacher_dob) VALUES ('$fname', '$lname', '$username', '$password', '$phone', '$address', '$year','$dob')";
+        // if($db_table == 'student'){
+        // $sql = "SELECT * FROM student WHERE student_username ='$username'";
+        // $res = mysqli_query($conn, $sql);
+        // if(mysqli_num_rows($res) > 0){
+        // echo  "<h1>Sorry... email already taken </h1>";  
+        //     } 
+        // else{
+
+        $sql = "INSERT INTO student(college_id,student_fname,student_lname,student_username,student_password ,student_phone,student_address,student_year,student_dob) VALUES ('$college_id','$fname', '$lname', '$username', '$password', '$phone', '$address', '$year','$dob')";   
+      //   }  
+
+      // }
+       // else 
+        if ($db_table == 'teacher') {   
+        // $sql = "SELECT * FROM teacher WHERE teacher_username ='$username'";
+        // $res = mysqli_query($conn, $sql);
+        // if(mysqli_num_rows($res) > 0){
+        // echo  "<h1>Sorry... email already taken </h1>";  
+        //     }   
+        //     else{
+            
+                 $sql = "INSERT INTO teacher(college_id,teacher_fname,teacher_lname,teacher_username,teacher_password ,teacher_phone,teacher_address,teacher_year,teacher_dob) VALUES ('$college_id','$fname', '$lname', '$username', '$password', '$phone', '$address', '$year','$dob')";
+            // }
+      
         }
-
-
-
  // Try to execute the query
     if (mysqli_query($conn, $sql) == TRUE) {
         echo "success";
@@ -38,13 +56,12 @@ mysqli_close($conn);
 ?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <title>Add User</title>
+    <title>REGISTER</title>
     <link rel="stylesheet" href="css/index.css">
     <link rel="stylesheet" href="css/tablet.css">
     <link rel="stylesheet" href="css/mobile.css">
@@ -78,7 +95,7 @@ mysqli_close($conn);
                 <div class="col-sm"></div>
                 <div class="col-sm">
                     <div id="login">
-                        <span class="login"> <a href="logout.php">Logout</a></span>
+                        <span class="login"> <a href="logout.php">Logout</a> </span>
                     </div>
                 </div>
                 <div class="col-sm">
@@ -92,43 +109,50 @@ mysqli_close($conn);
             </div>
         </div>
     </div>
+    <?php
+    $sql1= "SELECT * FROM college ";
+    $res1 = mysqli_query($conn,$sql1);
+    $data1=[];
+    if(mysqli_num_rows($res1)> 0){
+        while($row1 = mysqli_fetch_assoc($res1)){
+            array_unshift($data1,$row1);
+        }
+    }
+?>
     <div class="student-info">
-        <div class="container">
-            <div class="result-searchbox">
-                <form method="post" id="form" action=" " >
-                    <div class="legend">Register </div>
-                    <fieldset class="field">
-                        <div class="form-handler">
-                            <label>First Name</label>
-                            <input type="text" name="name" placeholder="Enter firstname" class="round" id="fname">
+            <div class="container">
+                <div class="result-searchbox">
+                    <form method="post" id="form" action="<?php echo $_SERVER['PHP_SELF']; ?> " autocomplete ="ON">
+                        <div class="legend">ADD USER </div>
+                        <fieldset class="field">
+                            <div class="form-handler">                     
+                                <label>First Name</label>                  
+                                <input type="text" name="name" placeholder="Enter firstname" class="round" id="fname">              
+                                <small></small>
+                            </div>
+                            <div class="form-handler">                               
+                                <label>Last Name</label> 
+                                <input type="text" name="last" placeholder="Last Name" class="round" id="last">                             
+                                <small></small>
+                            </div>
+                            <div class="form-handler">                              
+                            <label>Email</label>                           
+                            <input type="email" name="email" placeholder="Email" class="round" id="email">                           
                             <small></small>
-
                         </div>
-                        <div class="form-handler">
-                            <label>Last Name</label>
-                            <input type="text" name="last" placeholder="Last Name" class="round" id="last">
-                            <small></small>
-
-                        </div>
-                        <div class="form-handler">
-                            <label>Email</label>
-                            <input type="email" name="email" placeholder="Email" class="round" id="email">
-                            <small></small>
-
-                        </div>
-                        <div class="form-handler">
+                        <div class="form-handler">                            
                             <label>Password</label>
                             <input type="password" name="password" placeholder="Password" class="round" id="password">
                             <small></small>
                         </div>
                         <div class="form-handler">
-                            <label>Confirm Password</label></td>
+                            <label>Confirm Password</label>
                             <input type="password" name="password2" placeholder="Confirm Password" class="round"
                                 id="password2">
                             <small></small>
                         </div>
                         <div class="form-handler">
-                            <label>Mobile</label>
+                         <label>Mobile</label>
                             <input type="number" name="phone" placeholder="Mobile Number" class="round" id="phone">
                             <small></small>
                         </div>
@@ -137,23 +161,34 @@ mysqli_close($conn);
                             <input type="text" name="address" placeholder="Address" class="round" id="address">
                             <small></small>
                         </div>
+                       
+                         <div class="form-handler">
+                            <label>College</label>
+                            <select name = 'college'>
+                                <?php 
+                                foreach($data1 as $d1){
+                                 ?>
+                                <!-- <option value="">Select </option> -->
+                                <option value="<?php echo $d1['college_id'] ;?>"><?php echo $d1['college_name']; ?></option>
+                                
+                                <?php } ?>
+                            </select>
+                            <small></small>
+                        </div>
     
                         <div class="form-handler">
                             <label class="format">Year</label>
-
-
                             <select id="year" name="year">Year</select>
                             <small></small>
                         </div>
                         <div class="form-handler">
-                            <label>Date of Birth</label>
-                        <input type="text" name="dob" class="round" placeholder="date of birth" id="dob">
-                                <small></small>
-                               
-                        </div>
-                        <span class="year">DD/MM/YYYY</span>
-                        
-                        <div class="form-handler">
+                            <label>DOB</label>
+                            <input type="text" name="dob" class="round" placeholder="date of birth" id="dob">
+                              <small></small>       
+                            
+                         </div>
+                         <span class="year">YYYY/MM/DD</span>
+                          <div class="form-handler">
                             <label>Identity</label>
                             <select name = 'id'>
                                 <!-- <option value="">Select </option> -->
@@ -162,6 +197,8 @@ mysqli_close($conn);
                             </select>
                             <small></small>
                         </div>
+
+
 
                         <div class="form-handler">
                             <button type="submit" class="button" name="submit" id="submit">Submit</button>
@@ -206,8 +243,7 @@ mysqli_close($conn);
     <script type="text/javascript" src="./js/jquery3.3.1.js"></script>
     <!-- <script src="https://unpkg.com/sweetalert/dist/sweetalert.min.js"></script> -->
     <script type="text/javascript" src="./js/index.js"></script>
-   <script type="text/javascript" src="js/register1.js" ></script>
+   <script type="text/javascript" src="js/register2.js" ></script>
 
 </body>
-
 </html>
