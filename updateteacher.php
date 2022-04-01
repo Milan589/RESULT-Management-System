@@ -1,4 +1,5 @@
 <?php
+    session_start();
     include 'config.php';
     $id = $_GET['id'];
     $sql1 = "select * from teacher where teacher_id = '$id'";
@@ -7,6 +8,7 @@
     $data = mysqli_fetch_assoc($res);
 ?>
 <?php
+    if(isset($_SESSION['teacher_id'])){
     if(isset($_POST['submit'])){
 
             $fname = $_POST['name'];
@@ -31,7 +33,11 @@
         echo "Data update failed".mysqli_error($conn);
        }
       }
+  }else{
+     header('location:login.php');
+  }
       ?>
+ 
 
 
 

@@ -7,6 +7,7 @@ const cpass = document.getElementById("password2");
 const phone = document.getElementById("phone");
 const address = document.getElementById("address");
 const identity = document.getElementById("id");
+const college_id = document.getElementById("college");
 const year = document.getElementById("year");
 
      form.addEventListener('submit', (event) =>{
@@ -102,6 +103,13 @@ function validateForm(){
             }
             else {
                 showSuccess(identity);
+            }
+             // identity
+            if (college_id.value == '') {
+                showError(college_id, 'Must be selected');
+            }
+            else {
+                showSuccess(college_id);
             }
             if (year.value == '') {
                 showError(year, 'Must be selected');

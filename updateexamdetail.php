@@ -1,6 +1,9 @@
  <?php
+   session_start();
+
 $id = $_GET['id'];
 include 'config.php';
+ if(isset($_SESSION['teacher_id'])){
 
   if(isset($_POST['submit'])){
     
@@ -28,6 +31,10 @@ include 'config.php';
   $res = mysqli_query($conn, $sql1);
   $data = mysqli_fetch_assoc($res);
   print_r($data);
+}
+else{
+     header('location:login.php');
+}
 ?> 
 <!DOCTYPE html>
 <html lang="en">

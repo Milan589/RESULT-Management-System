@@ -1,7 +1,7 @@
 
 const email = document.getElementById("username");
 const pass = document.getElementById("password");
-const identity = document.getElementById("id");
+const id = document.getElementById("sel");
 
 
 form.addEventListener('submit', (event) => {
@@ -46,13 +46,13 @@ function validateForm() {
     }
     
     // //identity
-    // if (identity.value == '') {
-    //     showError(identity, 'Must be selected');
-    // }
-    // else
-    //  {
-    //     showSuccess(identity);
-    // }
+    if (id.value == '') {
+        showError(id, 'Must be selected');
+    }
+    else
+     {
+        showSuccess(id);
+    }
    
 }
 //valid email uisng Regular Expression

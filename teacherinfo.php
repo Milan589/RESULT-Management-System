@@ -1,5 +1,8 @@
 <?php
+  session_start();
    include 'config.php';
+    if(isset($_SESSION['teacher_id'])){
+
     $sql= "SELECT * FROM teacher ";
     $res = mysqli_query($conn,$sql);
 
@@ -9,6 +12,10 @@
             array_unshift($data,$row);
         }
     }
+}
+else{
+      header('location:login.php');
+}
 
 ?>
 <!DOCTYPE html>
