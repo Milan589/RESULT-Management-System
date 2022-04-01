@@ -1,9 +1,4 @@
-const form = document.getElementById("form");
-// const sid = document.getElementById("student-Id");
-// const fname = document.getElementById("fname");
-// const lname = document.getElementById("lname");
-const faculty = document.getElementById("faculty");
-const semester = document.getElementById("semester");
+const form = document.getElementById("form1");
 const sad = document.getElementById("sad");
 const sadpr = document.getElementById("sadpr");
 const daa = document.getElementById("daa");
@@ -41,50 +36,7 @@ form.addEventListener('submit', (event) => {
 
 
     function validateForm() {
-        // //student_ID
-        // if (sid.value.trim() == '') {
-        //     showError(sid, 'SID should not be empty');
-        // }
-        // else if (sid.value.trim().length < 5 || sid.value.trim().length  >=6) {
-        //     showError(sid, 'Must be 5 digit');
-        // }
-        // else {
-        //     showSuccess(sid);
-        // }
-        // //username
-
-        // if (fname.value.trim() == '') {
-        //     showError(fname, 'First name  should not be empty');
-        // }
-        // else if (fname.value.trim().length < 3 || fname.value.trim().length > 20) {
-        //     showError(fname, 'Must be in 3 and 20 character');
-        // }
-        // else {
-        //     showSuccess(fname);
-        // }
-        // //last name
-        // if (lname.value.trim() == '') {
-        //     showError(lname, 'Last Name  should not be empty');
-        // }
-        // else if (lname.value.trim().length < 3 || lname.value.trim().length > 20) {
-        //     showError(fname, 'Must be in 3 and 20 character');
-        // }
-        // else {
-        //     showSuccess(lname);
-        // }
-        //faculty
-        if(faculty.value.trim()==''){
-            showError(faculty,'Must be selected');
-        }
-        else{
-            showSuccess(faculty);
-        }
-        if(semester.value.trim()==''){
-            showError(semester,'Must be selected');
-        }
-        else{
-            showSuccess(semester);
-        }
+     
         //SAD marks
         if(sad.value==''){
             showError(sad,'Marks cannot be empty');

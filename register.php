@@ -15,32 +15,10 @@ if(isset($_POST['submit'])){
         $college_id=$_POST['college'];
         $db_table = $_POST['id'];
 
-            // echo "$db_table";
-            // $dob_c = "STR_TO_DATE(".$dob.",'dd/mm/yyyy' )";
-        // if($db_table == 'student'){
-        // $sql = "SELECT * FROM student WHERE student_username ='$username'";
-        // $res = mysqli_query($conn, $sql);
-        // if(mysqli_num_rows($res) > 0){
-        // echo  "<h1>Sorry... email already taken </h1>";  
-        //     } 
-        // else{
-
         $sql = "INSERT INTO student(college_id,student_fname,student_lname,student_username,student_password ,student_phone,student_address,student_year,student_dob) VALUES ('$college_id','$fname', '$lname', '$username', '$password', '$phone', '$address', '$year','$dob')";   
-      //   }  
 
-      // }
-       // else 
-        if ($db_table == 'teacher') {   
-        // $sql = "SELECT * FROM teacher WHERE teacher_username ='$username'";
-        // $res = mysqli_query($conn, $sql);
-        // if(mysqli_num_rows($res) > 0){
-        // echo  "<h1>Sorry... email already taken </h1>";  
-        //     }   
-        //     else{
-            
+        if ($db_table == 'teacher') {     
                  $sql = "INSERT INTO teacher(college_id,teacher_fname,teacher_lname,teacher_username,teacher_password ,teacher_phone,teacher_address,teacher_year,teacher_dob) VALUES ('$college_id','$fname', '$lname', '$username', '$password', '$phone', '$address', '$year','$dob')";
-            // }
-      
         }
  // Try to execute the query
     if (mysqli_query($conn, $sql) == TRUE) {
