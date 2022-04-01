@@ -1,7 +1,6 @@
 <?php
     include 'config.php';
-
- ?>
+?>
 <!DOCTYPE html>
 <html lang="en">
 
@@ -111,28 +110,13 @@
                             <label for="lname" class="labeling">Lastname :</label>
                            <span> <?php echo $d1['student_lname']; ?></span>
                         </div>
-                        <div class="form-handler">
+                        <!-- <div class="form-handler">
                             <label for="faculty" class="labeling">Faculty :</label>
                             <select id="faculty">
                                 <option value="">Select </option>
                                 <option value="CSIT">CSIT</option>
                                 <option value="BIM">BIM</option>
                                 <option value="BCA">BCA</option>
-                            </select>
-                            <small></small>
-                        </div>
-                        <div class="form-handler">
-                            <label class="labeling">Semester</label>
-                            <select id="semester">
-                                <option value="">Select Semester</option>
-                                <option value="1">First</option>
-                                <option value="2">Second</option>
-                                <option value="3">Third</option>
-                                <option value="4">Fourth</option>
-                                <option value="5">Fifth</option>
-                                <option value="6">Sixth</option>
-                                <option value="7">Seventh</option>
-                                <option value="8">Eighth</option>
                             </select>
                             <small></small>
                         </div>
