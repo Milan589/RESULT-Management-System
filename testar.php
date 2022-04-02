@@ -10,32 +10,10 @@
     LEFT JOIN STUDENT S ON R.student_id=S.student_id
     INNER JOIN SUBJECTS S1 ON E.subject_id=S1.subject_id
     Where E.semester='$semester' GROUP BY S1.subject_id";
-    
+
+
 
     //obtain values from form
-
-    // $sql = "INSERT INTO 
-    // `result`(student_id,exam_id, marks_obtained, grade)
-    // values(1,1,38,'C+')";
-    
-
-
- // Try to execute the query
-    if (mysqli_query($conn, $SQL) == TRUE) {
-        $res = mysqli_query($conn,$SQL);
-        $data = [];
-        // echo "Completion of first part";
-            // header("location: resultinfo.php");
-        if(mysqli_num_rows($res)> 0){
-        while($row = mysqli_fetch_assoc($res)){
-                    array_unshift($data,$row);
-                    // echo '<h1>fetch array<h1>';
-            }
-        }
-        foreach($data as $data1){
-        // echo $data1['subject_id'].'=>'.$data1['subject_name'];
-        // echo $data1['subject_name'];
-        $value = array();
         if(isset($_POST['submit'])){
             $value[$data1['subject_name']] = $_POST[$data1['subject_name']];
             $mark                          = $_POST[$data1['subject_name']];
@@ -50,16 +28,12 @@
                 echo "Error: " . $insert_exam . "<br>" . mysqli_error($conn);
                 echo "";
             }
+        }
 
-        }
-        }
-        }
-        
     else{
            echo "Error: " . $sql . "<br>" . $conn->error;
         }
 mysqli_close($conn);
-
 ?>
 <!DOCTYPE html>
 <html lang="en">
@@ -70,7 +44,9 @@ mysqli_close($conn);
     <title>Document</title>
 </head>
 <body>
-    <form method="post" action="">
+    <form method="post" action="?php
+                $url= $_SERVER['PHP_SELF']."?id=".$id."?sem=".$sem;
+                 echo $url ?>">
         <?php 
             foreach($data as $data1){
                 echo $data1['subject_name'];
@@ -79,7 +55,6 @@ mysqli_close($conn);
         <input type="number" name="<?php 
         echo $data1['subject_name'];?>" >
        
-
         <?php
             } ?>
          <button type="submit" name="submit"> SUBMIT </button>

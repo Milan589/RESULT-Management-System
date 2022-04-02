@@ -114,14 +114,14 @@ mysqli_close($conn);
                             <label >Semester</label>
                             <select id="semester" name="semester">
                                 <option value="">Select Semester</option>
-                                <option value="First Semester">First Semester</option>
-                                <option value="Second Semester">Second Semester</option>
-                                <option value="Third Semester">Third Semester</option>
-                                <option value="Fourth Semester">Fourth Semester</option>
-                                <option value="Fifth Semester">Fifth Semester</option>
-                                <option value="Sixth Semester">Sixth Semester</option>
-                                <option value="Seventh Semester">Seventh Semester</option>
-                                <option value="Eighth Semester">Eighth Semester</option>
+                                <option value="I">I</option>
+                                <option value="II">II </option>
+                                <option value="III">III </option>
+                                <option value="IV">IV </option>
+                                <option value="V">V</option>
+                                <option value="VI">VI </option>
+                                <option value="VII">VII </option>
+                                <option value="VIII">VIII </option>
                             </select>
                             <small></small>
                         </div>
