@@ -3,13 +3,14 @@
     $message    = "";
     $student    = $_GET['id'];
     $semester   = $_GET['sem'];
-    echo "Semester".$semester;
+    echo "Semester:".$semester;
     // $exam_year  = $_GET['year'];
     $SQL        = "Select  S1.subject_name, S1.subject_id, e.exam_id  from 
     EXAM E LEFT JOIN RESULT R ON E.exam_id=R.exam_id
     LEFT JOIN STUDENT S ON R.student_id=S.student_id
     INNER JOIN SUBJECTS S1 ON E.subject_id=S1.subject_id
     Where E.semester='$semester' GROUP BY S1.subject_id";
+
 
 
     //obtain values from form
