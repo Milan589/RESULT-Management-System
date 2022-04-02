@@ -1,7 +1,8 @@
-
+<?php
+include 'config.php'; 
+?>
 <!DOCTYPE html>
 <html lang="en">
-
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -71,7 +72,7 @@
             </div>
         </div>
     </div>
-    <div class="student-info">
+    <div class="student-info"> 
             <div class="result-form">
                 <section> 
                     <div class="legend">ADD RESULT</div>
@@ -79,7 +80,17 @@
                 <form method="get" id="form" class="add-result" action=""> 
                         <div class="form-handler">    
                             <label class="labeling">Student_ID:</label>
-                           <input type="text" name="sid" value="<?php if(isset($_GET['sid'])){ echo $_GET['sid'];}  ?>">     
+                           <input type="text" name="id" value="<?php if(isset($_GET['id'])){ echo $_GET['id'];}  ?>"> 
+                           </div> 
+                           <div class="form-handler">    
+                            <label class="labeling">Semester:</label>
+                            <select  name="semester">
+                                <!-- <option>Select</option> -->
+                                <option value="<?php if(isset($_GET['semester'])){ echo $_GET['semester'];}  ?>" ></option> 
+                            </select>
+                        
+                           </div>   
+                           <div class="form-handler">       
                         <button type="submit" class="button" > Search</button>
                         </div>
                   <!--   </fieldset> -->
@@ -97,21 +108,13 @@
                                         ?>
                                  <div class="form-handler">
                                     <label >First Name :</label>
-                                    <!-- <span><?php echo $row['student_fname']; ?></span> -->
                                    <input type="text" name="fname" value="<?php echo $row['student_fname']; ?>"> 
                              </div>
                         <div class="form-handler">
                             <label for="lname" >Lastname :</label>
                               <input type="text" name="lname" value="<?php echo $row['student_lname']; ?>">                       
                         </div>
-                              <div class="form-handler">
-                            <label for="faculty" >Faculty :</label>
-                              <input type="text" name="faculty" value="">    
-                       </div> 
-                       <div class="form-handler">
-                            <label >Semester</label>
-                            <input type="text" name="faculty" value="">
-                        </div> 
+                     
                             <?php      
                                 }
                               }
@@ -121,8 +124,35 @@
                             }    
                            }    
                          ?>   
-                            
-               
+                             <?php 
+                            if(isset($_GET['semester'])){
+                                  $semester = $_GET['semester'];
+                                $sql1= "SELECT * FROM exam WHERE semester = '$semester' ";
+                                $res1 = mysqli_query($conn,$sql1);
+                                if(mysqli_num_rows($res1)> 0){
+                                   if (is_array($res1) || is_object($res1)){
+                                    foreach($res1 as $row1){
+                                        ?>
+                         <div class="form-handler">
+                            <label >Semester</label>
+                            <input type="text" name="semester" value="<?php echo $row['semester']; ?>">
+                         
+                        </div>
+                     
+                            <?php      
+                                }
+                              }
+                            }
+                              else{
+                            echo "No record found";
+                            }    
+                           }    
+                         ?>   
+                          <div class="form-handler">
+                            <label for="faculty" >Faculty :</label>
+                              <input type="text" name="faculty" value="">    
+                       </div> 
+                       
                            
 
                 </section>
@@ -131,7 +161,7 @@
 
                         <form method="post" id="form1" class="add-result" action="">
                         <div class="form-handler">
-                            <label for="subject" class="labeling">Theory Subject :</label>
+                            <label for="subject" class="labeling"> Subjects :</label>
                         </div>
                         <div class="row">
                             <div class="col-sm-2">
@@ -178,63 +208,12 @@
                                 </div>
                             </div>
                         </div>
-<!-- 
-                        <div class="form-handler">
-                            <label for="Pr marks" class="labeling">Practical Subject :</label>
-                        </div>
-                        <div class="row">
-                            <div class="col-sm-2">
-                                <div class="form-handler">
-                                    <label for="lname" id="change">SAD_PR:</label>
-                                    <input type="number" id="sadpr" name="sadpr" class="round" min="0" placeholder="marks">
-                                    <small></small>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="form-handler">
-                                    <label for="lname" id="change">DAA_PR:</label>
-                                    <input type="number" id="daapr" name="daapr" class="round" min="0" placeholder="marks">
-                                    <small></small>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="form-handler">
-                                    <label for="lname" id="change">SM_PR:</label>
-                                    <input type="number" id="smpr" name="smpr" class="round" min="0" placeholder=" marks">
-                                    <small></small>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-2">
-                                <div class="form-handler">
-                                    <label for="lname" id="change">WEB_PR:</label>
-                                    <input type="number" id="webpr" name="webpr" class="round" min="0" placeholder="marks">
-                                    <small></small>
-                                </div>
-                            </div>
-
-                            <div class="col-sm-2">
-                                <div class="form-handler">
-                                    <label for="lname" id="change">MM_PR:</label>
-                                    <input type="number" id="mmpr" name="mmpr" class="round" min="0" placeholder="marks">
-                                    <small></small>
-                                </div>
-                            </div>
-                            <div class="col-sm-2">
-                                <div class="form-handler">
-                                    <label for="lname" id="change">CRY_PR:</label>
-                                    <input type="number" id="cryptpr" name="cryptpr" class="round" min="0" placeholder="marks">
-                                    <small></small>
-                                </div>
-                            </div>
-                        </div> -->
                         <div class="row">
                             <div class="form-handler">
                                 <button type="submit" class="button" id="submit" name="submit">Submit</button>
                             </div>
                         </div>
                     </form>
-            
             </div>
     </div>
        <footer class="foot-content">

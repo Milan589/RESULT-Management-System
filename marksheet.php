@@ -103,108 +103,79 @@
                 
                         <tr>
                        <th colspan="10" >
-                           <span class="year-tag"> First Year : First Semester Examination</span>
+                           <span class="year-tag"> Third Year : Fifth Semester Examination</span>
                        </th>
                     </tr>
-             
-                
                     <tr>
-                        <td rowspan="2">SN</td>
-                        <td rowspan="2">Subject</td>
-                        <td colspan="2"> FM </td>
-                        <td colspan="2">PM</td>
-                        <td colspan="2">OM</td>
-                        <td rowspan="2">Total</td>
-                        <td rowspan="2">Credit hrs.</td>
-                    </tr>
-                    <tr>
-                        <td>TH</td>
-                        <td>PR</td>
-                        <td>TH</td>
-                        <td>PR</td>
-                        <td>TH</td>
-                        <td>PR</td>
+                        <td >SN</td>
+                        <td >Subject</td>
+                        <td > Full Mark </td>
+                        <td >Pass Mark</td>
+                        <td >Obtained Mark</td>
+                        <td >Total</td>
+                       
                     </tr>
                     <tr>
                         <td>1</td>
                         <td>SAD</td>
                         <td>60</td>
-                        <td>40</td>
-                        <td>24</td>
-                        <td>16</td>
-                        <td>45</td>
-                        <td>35</td>
+                        <td>24</td>      
                         <td>80</td>
-                        <td>3 Cr.</td>
+                        <td>80</td>
+                       
+                
+                     
                     </tr>
 
                     <tr>
                         <td>2</td>
                         <td>DAA</td>
                         <td>60</td>
-                        <td>40</td>
                         <td>24</td>
-                        <td>16</td>
-                        <td>45</td>
-                        <td>35</td>
                         <td>80</td>
-                        <td>3 Cr.</td>
+                        <td>80</td>
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>SM</td>
                         <td>60</td>
-                        <td>40</td>
                         <td>24</td>
-                        <td>16</td>
-                        <td>45</td>
-                        <td>35</td>
                         <td>80</td>
-                        <td>3 Cr.</td>
+                        <td>80</td>
+                 
                     </tr>
                     <tr>
                         <td>4</td>
                         <td>WEB</td>
                         <td>60</td>
-                        <td>40</td>
                         <td>24</td>
-                        <td>16</td>
-                        <td>45</td>
-                        <td>35</td>
                         <td>80</td>
-                        <td>3 Cr.</td>
+                        <td>80</td>
+                 
                     </tr>
                     <tr>
                         <td>3</td>
                         <td>MM</td>
                         <td>60</td>
-                        <td>40</td>
                         <td>24</td>
-                        <td>16</td>
-                        <td>45</td>
-                        <td>35</td>
                         <td>80</td>
-                        <td>3 Cr.</td>
+                        <td>80</td>
+                 
                     </tr>
                     <tr>
                         <td>5</td>
                         <td>CRYPTO</td>
                         <td>60</td>
-                        <td>40</td>
                         <td>24</td>
-                        <td>16</td>
-                        <td>45</td>
-                        <td>35</td>
                         <td>80</td>
-                        <td>3 Cr.</td>
+                        <td>80</td>
+                 
                     </tr>
                     <tr>
-                    <th colspan="8">Grand Total</th>
+                    <th colspan="5">Grand Total</th>
                     <td>400</td>
-                    <td>18 Cr.</td>
                     </tr>
                     <tr>
-                        <th colspan="3"> Percentage: <span>80.00 %</span> </th>
                         <th colspan="4"> Grade: <span>A</span></th>
                         <th colspan="3"> Remarks: <span>Pass</span></th>
                     </tr>

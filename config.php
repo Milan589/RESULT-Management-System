@@ -3,7 +3,6 @@
 $servername ="localhost";
 $username ="root";
 $password ="";
-// $dbname = "rms";
 $dbname = "rms";
 
 //create connection
